@@ -51,9 +51,10 @@
     <Compile Include="LexicalAnalayzer\ILexicalAnalyzer.cs" />
     <Compile Include="LexicalAnalayzer\LexicalAnalyzer.cs" />
     <Compile Include="LexicalAnalayzer\StringTokenMapper.cs" />
-    <Compile Include="Parser\IParser.cs" />
-    <Compile Include="Parser\Parser.cs" />
-    <Compile Include="Parser\StatementParser.cs" />
+    <Compile Include="SyntaxAnalyzer\IParser.cs" />
+    <Compile Include="SyntaxAnalyzer\Parser.cs" />
+    <Compile Include="SyntaxAnalyzer\ParserService.cs" />
+    <Compile Include="SyntaxAnalyzer\StatementParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\StreamExtensions.cs" />
     <Compile Include="Structures\BinaryStructure.cs" />

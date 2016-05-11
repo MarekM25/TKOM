@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace BinaryStructureLib
 {
-    public partial class Parser : IParser
+    public class Parser : IParser
     {
-        ILexicalAnalyzer lexicalAnalyzer;
+        public ILexicalAnalyzer lexicalAnalyzer;
+
         public Parser(ILexicalAnalyzer lexicalAnalyzer)
         {
             this.lexicalAnalyzer = lexicalAnalyzer;
@@ -26,11 +27,29 @@ namespace BinaryStructureLib
             return null;
         }
 
+        private void ParameterLists()
+        {
+            Expect(Operators.OpeningCircleBracket);
+            do
+            {
+                Parameter();
+            } while (Accept(Operators.Comma);
+            Expect(Operators.ClosingCircleBracket);
+        }
+
+        private void Parameter()
+        {
+
+        }
+
         private void StructDeclarations()
         {
             if (Accept(Keywords.StructType))
             {
-               // Expect()
+                ParameterLists();
+                
+                
+                Expect()
                 if (Accept(Keywords.Begin))
                 {
 
@@ -53,10 +72,10 @@ namespace BinaryStructureLib
             return Accept(new Token(TokenType.Operator, (object)oper));
         }
 
-        //private bool Accept(Operators oper)
-        //{
-        //    return Accept(new Token(TokenType.Operator, (object)oper));
-        //}
+        private bool Accept(TokenType type)
+        {
+            return Accept(new Token(type, null));
+        }
 
         private bool Accept(Keywords keyword)
         {
@@ -78,11 +97,12 @@ namespace BinaryStructureLib
 
         private bool Expect(Keywords keyword)
         {
-            if (Accept(keyword))
-                return true;
-            //Parse exception//error("expect: unexpected symbol");
-            return false;
+            return Expect(new Token(TokenType.Keyword, keyword));
         }
 
+        private bool Expect(Operators operators)
+        {
+            return Expect(new Token(TokenType.Operator, operators));
+        }
     }
 }

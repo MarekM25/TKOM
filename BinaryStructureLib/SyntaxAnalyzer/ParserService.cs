@@ -8,5 +8,6 @@ namespace BinaryStructureLib.SyntaxAnalyzer
 {
     class ParserService
     {
+
     }
 }
