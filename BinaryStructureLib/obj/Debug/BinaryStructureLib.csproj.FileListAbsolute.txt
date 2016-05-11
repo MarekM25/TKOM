@@ -1,0 +1,5 @@
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureLib\bin\Debug\BinaryStructureLib.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureLib\bin\Debug\BinaryStructureLib.pdb
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureLib\obj\Debug\BinaryStructureLib.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureLib\obj\Debug\BinaryStructureLib.pdb
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureLib\obj\Debug\BinaryStructureLib.csprojResolveAssemblyReference.cache

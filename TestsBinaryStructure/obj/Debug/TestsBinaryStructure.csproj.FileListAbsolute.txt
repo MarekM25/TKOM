@@ -1,0 +1,13 @@
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\bin\Debug\TestsBinaryStructure.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\bin\Debug\TestsBinaryStructure.pdb
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\obj\Debug\TestsBinaryStructure.csprojResolveAssemblyReference.cache
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\obj\Debug\TestsBinaryStructure.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\obj\Debug\TestsBinaryStructure.pdb
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\bin\Debug\BinaryStructureLib.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\bin\Debug\BinaryStructureLib.pdb
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\obj\Debug\TestsBinaryStructure.Properties.Resources.resources
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\obj\Debug\TestsBinaryStructure.csproj.GenerateResource.Cache
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\bin\Debug\TestsBinaryStructure.dll.config
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\bin\Debug\EntityFramework.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\bin\Debug\EntityFramework.xml
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\TestsBinaryStructure\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll

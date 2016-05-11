@@ -1,0 +1,8 @@
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructure\bin\Debug\BinaryStructure.exe.config
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructure\bin\Debug\BinaryStructure.exe
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructure\bin\Debug\BinaryStructure.pdb
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructure\bin\Debug\BinaryStructureLib.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructure\bin\Debug\BinaryStructureLib.pdb
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructure\obj\Debug\BinaryStructureClient.csprojResolveAssemblyReference.cache
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructure\obj\Debug\BinaryStructure.exe
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructure\obj\Debug\BinaryStructure.pdb

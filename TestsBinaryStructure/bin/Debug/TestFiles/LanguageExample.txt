@@ -1,0 +1,2 @@
+struct T(int parameter1,int  parameter2, bool boolParameter)
+begin

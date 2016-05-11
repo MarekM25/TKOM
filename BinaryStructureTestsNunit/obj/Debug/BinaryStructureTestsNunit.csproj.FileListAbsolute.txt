@@ -1,0 +1,9 @@
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\BinaryStructureTestsNunit.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\BinaryStructureTestsNunit.pdb
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\nunit.framework.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\nunit.framework.xml
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\obj\Debug\BinaryStructureTestsNunit.csprojResolveAssemblyReference.cache
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\obj\Debug\BinaryStructureTestsNunit.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\obj\Debug\BinaryStructureTestsNunit.pdb
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\BinaryStructureLib.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\BinaryStructureLib.pdb
