@@ -48,6 +48,7 @@
     <Compile Include="Enums\TokenType.cs" />
     <Compile Include="Exceptions\LexicalAnalyzerException.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
+    <Compile Include="KeywordToken.cs" />
     <Compile Include="LexicalAnalayzer\ILexicalAnalyzer.cs" />
     <Compile Include="LexicalAnalayzer\LexicalAnalyzer.cs" />
     <Compile Include="LexicalAnalayzer\StringTokenMapper.cs" />
@@ -62,7 +63,14 @@
     <Compile Include="Structures\Statement.cs" />
     <Compile Include="Structures\Statements\IfStatement.cs" />
     <Compile Include="Structures\StructDeclarations.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\StructParser.cs" />
     <Compile Include="Token.cs" />
+    <Compile Include="Tokens\TokenBase.cs" />
+    <Compile Include="Tokens\TokenGenericBase.cs" />
+    <Compile Include="Tokens\TokenId.cs" />
+    <Compile Include="Tokens\TokenKeyword.cs" />
+    <Compile Include="Tokens\TokenOperator.cs" />
+    <Compile Include="Tokens\TokenValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

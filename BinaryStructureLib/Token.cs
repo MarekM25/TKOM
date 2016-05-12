@@ -6,15 +6,32 @@ using System.Threading.Tasks;
 
 namespace BinaryStructureLib
 {
-    public struct Token : IEquatable<Token>
+    public class Token : IEquatable<Token>
     {
-        private TokenType keyword;
+        private TokenType type;
         private object value;
 
-        public Token(TokenType keyword, object value) : this()
+        public Token(TokenType type, object value) : this()
         {
-            this.keyword = keyword;
+            this.type = type;
             this.value = value;
+        }
+
+        public Token()
+        {
+        }
+
+        public object SomePropertyName
+        {
+            get
+            {
+                return SomePropertyImpl();
+            }
+        }
+        protected virtual object SomePropertyImpl()
+        {
+            // base-class version
+            return null;
         }
 
         public TokenType Type { get; set; }
@@ -27,7 +44,16 @@ namespace BinaryStructureLib
                 Value.ToString());
         }
 
-    
+        public bool Equals(Keywords keyword)
+        {
+            return this.Type == TokenType.Keyword && this.Value.Equals(keyword);
+        }
+
+        public bool Equals(Operators oper)
+        {
+            return this.Type == TokenType.Operator && this.Value.Equals(oper);
+        }
+
         public bool Equals(Token other)
         {
             if (this.Type == TokenType.Keyword || this.Type == TokenType.Operator)
@@ -35,5 +61,5 @@ namespace BinaryStructureLib
             else
                 return this.Type == other.Type;
         }
-}
+    }
 }
