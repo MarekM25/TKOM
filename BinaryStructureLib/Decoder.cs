@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BinaryStructureLib.Structures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +9,24 @@ namespace BinaryStructureLib
 {
     public class Decoder
     {
-        private string pattern;
+        private BinaryStructure binaryStructure;
+        private byte[] byteArray;
 
-        public Decoder(string pattern)
+        public Decoder(BinaryStructure binaryStructure, byte[] byteArray)
         {
-            this.pattern = pattern;
+            this.binaryStructure = binaryStructure;
+            this.byteArray = byteArray;
         }
 
-        public T Decode<T>(byte[] byteArray) where T :new()
+        private void DecodeSingleStatemnet(Statement test)
         {
-            return default(T);
+            Console.WriteLine("Zdekodowano {0}",test.Name);
+            Console.WriteLine(Convert.ToInt32(byteArray[0]));
+        }
+
+        public void Decode() 
+        {
+            DecodeSingleStatemnet(binaryStructure.mainStructure.statements[0]);
         }
     }
 }

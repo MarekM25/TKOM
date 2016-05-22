@@ -66,7 +66,6 @@
     <Compile Include="StreamTests.cs" />
     <Compile Include="StringTokenMapperTestscs.cs" />
     <Compile Include="TokenTests.cs" />
-    <Compile Include="TokenEqualityTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BinaryStructureLib\BinaryStructureLib.csproj">

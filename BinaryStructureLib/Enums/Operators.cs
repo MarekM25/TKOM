@@ -17,6 +17,8 @@ namespace BinaryStructureLib
         LogicAnd,
         LogicOr,
         LogicNegation,
-        LogicCompare
+        LogicCompare,
+        Greater,
+        Smaller
     }
 }

@@ -34,15 +34,35 @@
       <HintPath>..\packages\NUnit.3.2.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ploeh.AutoFixture, Version=3.46.0.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.3.46.0\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture.NUnit3, Version=3.46.0.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.NUnit3.3.46.0\lib\net40\Ploeh.AutoFixture.NUnit3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ploeh.SemanticComparison, Version=3.46.0.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\SemanticComparison.3.46.0\lib\net40\Ploeh.SemanticComparison.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interpreter\BoolExpressionInterpreterTests.cs" />
     <Compile Include="LexicalAnalyzer\LexicalAnalyzerMock.cs" />
+    <Compile Include="SyntaxAnalyzer\BinaryStructureParserTests.cs" />
+    <Compile Include="SyntaxAnalyzer\BoolExpressionParameterListsParser.cs" />
+    <Compile Include="SyntaxAnalyzer\MainParserTests.cs" />
+    <Compile Include="SyntaxAnalyzer\ParameterListParserTest.cs" />
+    <Compile Include="SyntaxAnalyzer\ParserServiceTests.cs" />
     <Compile Include="SyntaxAnalyzer\StructParserTests.cs" />
-    <Compile Include="TokenEqualityTests.cs" />
+    <Compile Include="Tokens\TokenEqualityTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tokens\TokenToStringTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

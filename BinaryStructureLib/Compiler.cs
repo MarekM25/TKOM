@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BinaryStructureLib.Structures;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace BinaryStructureLib
             this.stream = stream;
         }
 
+        public BinaryStructure Result { get; set; }
         public string Error { get; set; }
 
         public bool Compile()
@@ -22,8 +24,9 @@ namespace BinaryStructureLib
             try
             {
                 ILexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(stream);
+                lexicalAnalyzer.Init();
                 IParser parser = new Parser(lexicalAnalyzer);
-                parser.Parse();
+                Result = parser.Parse();
             }
             catch (LexicalAnalyzerException lexException)
             {

@@ -38,6 +38,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnconstrainedMelody, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\UnconstrainedMelody.0.2.1\lib\UnconstrainedMelody.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Coder.cs" />
@@ -48,29 +52,50 @@
     <Compile Include="Enums\TokenType.cs" />
     <Compile Include="Exceptions\LexicalAnalyzerException.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
-    <Compile Include="KeywordToken.cs" />
     <Compile Include="LexicalAnalayzer\ILexicalAnalyzer.cs" />
     <Compile Include="LexicalAnalayzer\LexicalAnalyzer.cs" />
     <Compile Include="LexicalAnalayzer\StringTokenMapper.cs" />
+    <Compile Include="Structures\ConditionExpression\BinaryOperator.cs" />
+    <Compile Include="Structures\ConditionExpression\ConditionExpression.cs" />
+    <Compile Include="Structures\ConditionExpression\ConstantBool.cs" />
+    <Compile Include="Structures\ConditionExpression\ConstantInt.cs" />
+    <Compile Include="Structures\ConditionExpression\IGenericValue.cs" />
+    <Compile Include="Structures\ConditionExpression\Negation.cs" />
+    <Compile Include="Structures\ConditionExpression\VariableExpression.cs" />
+    <Compile Include="Structures\Parameter.cs" />
+    <Compile Include="Structures\Statements\ArrayVariableDeclaration.cs" />
+    <Compile Include="Structures\Statements\OwnTypeDeclaration.cs" />
+    <Compile Include="Structures\Statements\VariableDeclaration.cs" />
+    <Compile Include="Structures\Structure.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\BoolExpressionListsParser.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\IfStatementParser.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\BlockParser.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\MainParser.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\OwnTypeDeclarationParser.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\ParameterParser.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\ParameterListParser.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\BlockParser2.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\VariableDeclarationParser.cs" />
     <Compile Include="SyntaxAnalyzer\IParser.cs" />
     <Compile Include="SyntaxAnalyzer\Parser.cs" />
     <Compile Include="SyntaxAnalyzer\ParserService.cs" />
-    <Compile Include="SyntaxAnalyzer\StatementParser.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\StatementParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\StreamExtensions.cs" />
     <Compile Include="Structures\BinaryStructure.cs" />
     <Compile Include="Structures\MainStructure.cs" />
-    <Compile Include="Structures\Statement.cs" />
+    <Compile Include="Structures\Statements\Statement.cs" />
     <Compile Include="Structures\Statements\IfStatement.cs" />
-    <Compile Include="Structures\StructDeclarations.cs" />
     <Compile Include="SyntaxAnalyzer\ComponentsParsers\StructParser.cs" />
-    <Compile Include="Token.cs" />
     <Compile Include="Tokens\TokenBase.cs" />
     <Compile Include="Tokens\TokenGenericBase.cs" />
     <Compile Include="Tokens\TokenId.cs" />
     <Compile Include="Tokens\TokenKeyword.cs" />
     <Compile Include="Tokens\TokenOperator.cs" />
     <Compile Include="Tokens\TokenValue.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

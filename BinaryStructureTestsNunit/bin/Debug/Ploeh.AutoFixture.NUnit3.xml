@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ploeh.AutoFixture.NUnit3</name>
+    </assembly>
+    <members>
+        <member name="T:Ploeh.AutoFixture.NUnit3.InlineAutoDataAttribute">
+            <summary>
+            This attribute acts as a TestCaseAttribute but allow incomplete parameter values, 
+            which will be provided by AutoFixture. 
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.InlineAutoDataAttribute.#ctor(System.Object[])">
+            <summary>
+            Construct a <see cref="T:Ploeh.AutoFixture.NUnit3.InlineAutoDataAttribute"/>
+            with parameter values for test method
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.InlineAutoDataAttribute.#ctor(Ploeh.AutoFixture.IFixture,System.Object[])">
+            <summary>
+            Construct a <see cref="T:Ploeh.AutoFixture.NUnit3.InlineAutoDataAttribute"/> with an <see cref="T:Ploeh.AutoFixture.IFixture"/> 
+            and parameter values for test method
+            </summary>
+        </member>
+        <member name="P:Ploeh.AutoFixture.NUnit3.InlineAutoDataAttribute.Arguments">
+            <summary>
+            Gets the parameter values for the test method.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.InlineAutoDataAttribute.BuildFrom(NUnit.Framework.Interfaces.IMethodInfo,NUnit.Framework.Internal.Test)">
+            <summary>
+                Construct one or more TestMethods from a given MethodInfo,
+                using available parameter data.
+            </summary>
+            <param name="method">The MethodInfo for which tests are to be constructed.</param>
+            <param name="suite">The suite to which the tests will be added.</param>
+            <returns>One or more TestMethods</returns>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.InlineAutoDataAttribute.GetParameterValues(System.Collections.Generic.IEnumerable{NUnit.Framework.Interfaces.IParameterInfo})">
+            <summary>
+            Get values for a collection of <see cref="T:NUnit.Framework.Interfaces.IParameterInfo"/>
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.InlineAutoDataAttribute.GetValueForParameter(NUnit.Framework.Interfaces.IParameterInfo)">
+            <summary>
+            Get value for an <see cref="T:NUnit.Framework.Interfaces.IParameterInfo"/>
+            </summary>
+        </member>
+        <member name="T:Ploeh.AutoFixture.NUnit3.AutoDataAttribute">
+            <summary>
+            This attribute uses AutoFixture to generate values for unit test parameters. 
+            This implementation is based on TestCaseAttribute of NUnit3
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.AutoDataAttribute.#ctor">
+            <summary>
+            Construct a <see cref="T:Ploeh.AutoFixture.NUnit3.AutoDataAttribute"/>
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.AutoDataAttribute.#ctor(Ploeh.AutoFixture.IFixture)">
+            <summary>
+            Construct a <see cref="T:Ploeh.AutoFixture.NUnit3.AutoDataAttribute"/> with an <see cref="T:Ploeh.AutoFixture.IFixture"/> 
+            </summary>
+            <param name="fixture"></param>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.AutoDataAttribute.BuildFrom(NUnit.Framework.Interfaces.IMethodInfo,NUnit.Framework.Internal.Test)">
+            <summary>
+                Construct one or more TestMethods from a given MethodInfo,
+                using available parameter data.
+            </summary>
+            <param name="method">The MethodInfo for which tests are to be constructed.</param>
+            <param name="suite">The suite to which the tests will be added.</param>
+            <returns>One or more TestMethods</returns>
+        </member>
+        <member name="T:Ploeh.AutoFixture.NUnit3.CustomizeAttribute">
+            <summary>
+            Base class for customizing parameters in methods decorated with
+            <see cref="T:Ploeh.AutoFixture.NUnit3.AutoDataAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.CustomizeAttribute.GetCustomization(System.Reflection.ParameterInfo)">
+            <summary>
+            Gets a customization for a parameter.
+            </summary>
+            <param name="parameter">The parameter for which the customization is requested.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Ploeh.AutoFixture.NUnit3.FavorArraysAttribute">
+            <summary>
+            An attribute that can be applied to parameters in an <see cref="T:Ploeh.AutoFixture.NUnit3.AutoDataAttribute"/>-driven
+            TestCase to indicate that the parameter value should be created using a constructor with one
+            or more array arguments, if applicable.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.FavorArraysAttribute.GetCustomization(System.Reflection.ParameterInfo)">
+            <summary>
+            Gets a customization that associates a <see cref="T:Ploeh.AutoFixture.Kernel.ArrayFavoringConstructorQuery"/> with
+            the <see cref="T:System.Type"/> of the parameter.
+            </summary>
+            <param name="parameter">The parameter for which the customization is requested.</param>
+            <returns>
+            A customization that associates a <see cref="T:Ploeh.AutoFixture.Kernel.ArrayFavoringConstructorQuery"/> with the
+            <see cref="T:System.Type"/> of the parameter.
+            </returns>
+        </member>
+        <member name="T:Ploeh.AutoFixture.NUnit3.FavorEnumerablesAttribute">
+            <summary>
+            An attribute that can be applied to parameters in an <see cref="T:Ploeh.AutoFixture.NUnit3.AutoDataAttribute"/>-driven
+            TestCase to indicate that the parameter value should be created using a constructor with one
+            or more <see cref="T:System.Collections.Generic.IEnumerable`1" /> arguments, if applicable.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.FavorEnumerablesAttribute.GetCustomization(System.Reflection.ParameterInfo)">
+            <summary>
+            Gets a customization that associates a <see cref="T:Ploeh.AutoFixture.Kernel.EnumerableFavoringConstructorQuery"/>
+            with the <see cref="T:System.Type"/> of the parameter.
+            </summary>
+            <param name="parameter">The parameter for which the customization is requested.</param>
+            <returns>
+            A customization that associates a <see cref="T:Ploeh.AutoFixture.Kernel.EnumerableFavoringConstructorQuery"/> with
+            the <see cref="T:System.Type"/> of the parameter.
+            </returns>
+        </member>
+        <member name="T:Ploeh.AutoFixture.NUnit3.FavorListsAttribute">
+            <summary>
+            An attribute that can be applied to parameters in an <see cref="T:Ploeh.AutoFixture.NUnit3.AutoDataAttribute"/>-driven
+            TestCase to indicate that the parameter value should be created using a constructor with one
+            or more <see cref="T:System.Collections.Generic.IList`1" /> arguments, if applicable.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.FavorListsAttribute.GetCustomization(System.Reflection.ParameterInfo)">
+            <summary>
+            Gets a customization that associates a <see cref="T:Ploeh.AutoFixture.Kernel.ListFavoringConstructorQuery"/> with
+            the <see cref="T:System.Type"/> of the parameter.
+            </summary>
+            <param name="parameter">The parameter for which the customization is requested.</param>
+            <returns>
+            A customization that associates a <see cref="T:Ploeh.AutoFixture.Kernel.ListFavoringConstructorQuery"/> with the
+            <see cref="T:System.Type"/> of the parameter.
+            </returns>
+        </member>
+        <member name="T:Ploeh.AutoFixture.NUnit3.FrozenAttribute">
+            <summary>
+            An attribute that can be applied to parameters in an <see cref="T:Ploeh.AutoFixture.NUnit3.AutoDataAttribute"/>-driven
+            TestCase to indicate that the parameter value should be frozen so that the same instance is
+            returned every time the <see cref="T:Ploeh.AutoFixture.IFixture"/> creates an instance of that type.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.FrozenAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.NUnit3.FrozenAttribute"/> class.
+            </summary>
+            <remarks>
+            The <see cref="T:Ploeh.AutoFixture.NUnit3.Matching"/> criteria used to determine
+            which requests will be satisfied by the frozen parameter value
+            is <see cref="F:Matching.ExactType"/>.
+            </remarks>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.FrozenAttribute.#ctor(Ploeh.AutoFixture.NUnit3.Matching)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Ploeh.AutoFixture.NUnit3.FrozenAttribute"/> class.
+            </summary>
+            <param name="by">
+            The <see cref="T:Ploeh.AutoFixture.NUnit3.Matching"/> criteria used to determine
+            which requests will be satisfied by the frozen parameter value.
+            </param>
+        </member>
+        <member name="P:Ploeh.AutoFixture.NUnit3.FrozenAttribute.By">
+            <summary>
+            Gets the <see cref="T:Ploeh.AutoFixture.NUnit3.Matching"/> criteria used to determine
+            which requests will be satisfied by the frozen parameter value.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.FrozenAttribute.GetCustomization(System.Reflection.ParameterInfo)">
+            <summary>
+            Gets a <see cref="T:Ploeh.AutoFixture.FreezeOnMatchCustomization"/> configured
+            to match requests based on the <see cref="T:System.Type"/> and optionally
+            the name of the parameter.
+            </summary>
+            <param name="parameter">
+            The parameter for which the customization is requested.
+            </param>
+            <returns>
+            A <see cref="T:Ploeh.AutoFixture.FreezeOnMatchCustomization"/> configured
+            to match requests based on the <see cref="T:System.Type"/> and optionally
+            the name of the parameter.
+            </returns>
+        </member>
+        <member name="T:Ploeh.AutoFixture.NUnit3.GreedyAttribute">
+            <summary>
+            An attribute that can be applied to parameters in an <see cref="T:Ploeh.AutoFixture.NUnit3.AutoDataAttribute"/>-driven
+            TestCase to indicate that the parameter value should be created using the most greedy
+            constructor that can be satisfied by an <see cref="T:Ploeh.AutoFixture.IFixture"/>.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.GreedyAttribute.GetCustomization(System.Reflection.ParameterInfo)">
+            <summary>
+            Gets a customization that associates a <see cref="T:Ploeh.AutoFixture.Kernel.GreedyConstructorQuery"/> with the
+            <see cref="T:System.Type"/> of the parameter.
+            </summary>
+            <param name="parameter">The parameter for which the customization is requested.</param>
+            <returns>
+            A customization that associates a <see cref="T:Ploeh.AutoFixture.Kernel.GreedyConstructorQuery"/> with the
+            <see cref="T:System.Type"/> of the parameter.
+            </returns>
+        </member>
+        <member name="T:Ploeh.AutoFixture.NUnit3.Matching">
+            <summary>
+            The criteria used to determine which requests will be satisfied
+            by the frozen specimen created for a parameter
+            decorated with the <see cref="T:Ploeh.AutoFixture.NUnit3.FrozenAttribute"/> attribute.
+            </summary>
+        </member>
+        <member name="F:Ploeh.AutoFixture.NUnit3.Matching.ExactType">
+            <summary>
+            Matches requests for the exact same <see cref="T:System.Type"/>
+            as the type of the parameter.
+            </summary>
+        </member>
+        <member name="F:Ploeh.AutoFixture.NUnit3.Matching.DirectBaseType">
+            <summary>
+            Matches requests for a <see cref="T:System.Type"/> that is
+            a direct base of the type of the parameter.
+            </summary>
+        </member>
+        <member name="F:Ploeh.AutoFixture.NUnit3.Matching.ImplementedInterfaces">
+            <summary>
+            Matches requests for an interface <see cref="T:System.Type"/> that is
+            implemented by the type of the parameter.
+            </summary>
+        </member>
+        <member name="F:Ploeh.AutoFixture.NUnit3.Matching.ParameterName">
+            <summary>
+            Matches requests for a <see cref="T:System.Reflection.ParameterInfo"/> whose
+            <see cref="T:System.Type"/> is compatible with the type of the parameter
+            and has a specific name.
+            </summary>
+        </member>
+        <member name="F:Ploeh.AutoFixture.NUnit3.Matching.PropertyName">
+            <summary>
+            Matches requests for a <see cref="T:System.Reflection.PropertyInfo"/> whose
+            <see cref="T:System.Type"/> is compatible with the type of the parameter
+            and has a specific name.
+            </summary>
+        </member>
+        <member name="F:Ploeh.AutoFixture.NUnit3.Matching.FieldName">
+            <summary>
+            Matches requests for a <see cref="T:System.Reflection.FieldInfo"/> whose
+            <see cref="T:System.Type"/> is compatible with the type of the parameter
+            and has a specific name.
+            </summary>
+        </member>
+        <member name="F:Ploeh.AutoFixture.NUnit3.Matching.MemberName">
+            <summary>
+            Matches requests for a parameter, property or field whose
+            <see cref="T:System.Type"/> is compatible with the type of the parameter
+            and has a specific name.
+            </summary>
+        </member>
+        <member name="T:Ploeh.AutoFixture.NUnit3.ModestAttribute">
+            <summary>
+            An attribute that can be applied to parameters in an <see cref="T:Ploeh.AutoFixture.NUnit3.AutoDataAttribute"/>-driven
+            TestCase to indicate that the parameter value should be created using the most modest
+            constructor that can be satisfied by an <see cref="T:Ploeh.AutoFixture.IFixture"/>.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.ModestAttribute.GetCustomization(System.Reflection.ParameterInfo)">
+            <summary>
+            Gets a customization that associates a <see cref="T:Ploeh.AutoFixture.Kernel.ModestConstructorQuery"/> with the
+            <see cref="T:System.Type"/> of the parameter.
+            </summary>
+            <param name="parameter">The parameter for which the customization is requested.</param>
+            <returns>
+            A customization that associates a <see cref="T:Ploeh.AutoFixture.Kernel.ModestConstructorQuery"/> with the
+            <see cref="T:System.Type"/> of the parameter.
+            </returns>
+        </member>
+        <member name="T:Ploeh.AutoFixture.NUnit3.NoAutoPropertiesAttribute">
+            <summary>
+            An attribute that can be applied to parameters in an <see cref="T:Ploeh.AutoFixture.NUnit3.AutoDataAttribute"/>-driven
+            TestCase to indicate that the parameter value should not have properties auto populated
+            when the <see cref="T:Ploeh.AutoFixture.IFixture"/> creates an instance of that type.
+            </summary>
+        </member>
+        <member name="M:Ploeh.AutoFixture.NUnit3.NoAutoPropertiesAttribute.GetCustomization(System.Reflection.ParameterInfo)">
+            <summary>
+            Gets a customization that stops auto population of properties for the type of the parameter.
+            </summary>
+            <param name="parameter">The parameter for which the customization is requested.</param>
+            <returns>
+            A customization that stops auto population of the <see cref="T:System.Type"/> of the parameter.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="parameter"/> is null.
+            </exception>
+        </member>
+    </members>
+</doc>

@@ -7,3 +7,10 @@ C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\obj\Debug
 C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\obj\Debug\BinaryStructureTestsNunit.pdb
 C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\BinaryStructureLib.dll
 C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\BinaryStructureLib.pdb
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\BinaryStructureTestsNunit.dll.config
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\Ploeh.AutoFixture.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\Ploeh.AutoFixture.NUnit3.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\Ploeh.SemanticComparison.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\Ploeh.AutoFixture.xml
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\Ploeh.AutoFixture.NUnit3.xml
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureTestsNunit\bin\Debug\Ploeh.SemanticComparison.xml

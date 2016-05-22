@@ -5,7 +5,9 @@ using System.Text;
 
 namespace BinaryStructureLib.Structures
 {
-    class StructDeclarations
+    public class Statement
     {
+        public string Name { get; set; }
+        public int Size { get; set; }
     }
 }

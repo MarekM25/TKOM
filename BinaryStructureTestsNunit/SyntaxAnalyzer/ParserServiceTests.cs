@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BinaryStructureLib
+namespace BinaryStructureTestsNunit.SyntaxAnalyzer
 {
-
+    public class ParserServiceTests
+    {
+    }
 }

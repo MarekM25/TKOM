@@ -15,16 +15,13 @@ namespace BinaryStructureTestsNunit.Parser
     [TestFixture]
     public class StructParserTests
     {
-        private Token[] tokens = new Token[]
-            {  new Token(TokenType.Keyword, Keywords.StructType) };
+        private TokenBase[] tokens = new TokenBase[]
+            {  new TokenKeyword(Keywords.StructType) };
         [Test]
         public void Test()
         {
-            var keyword = new TokenKeyword(Keywords.False);
-            var oper = new TokenOperator(Operators.LogicAnd);
-            keyword.Equals(oper);
-            //ParserService.Initialize(new LexicalAnalyzerMock(tokens));
-            //StructParser.Parse();
+            ParserService.Initialize(new LexicalAnalyzerMock(tokens));
+            StructParser.Parse();
         } 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BinaryStructureLib;
+using BinaryStructureLib.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,31 +10,36 @@ namespace BinaryStructureTestsNunit.LexicalAnalyzer
 {
     public class LexicalAnalyzerMock : ILexicalAnalyzer
     {
-        private Token[] tokens;
-        private int nextIndex;
+        private TokenBase[] tokens;
+        private int currentIndex;
 
-        public LexicalAnalyzerMock(Token[] tokens)
+        public LexicalAnalyzerMock(TokenBase[] tokens)
         {
             this.tokens = tokens;
-            this.nextIndex = 0;
+            this.currentIndex = 0;
         }
 
-        public Token CurrentToken
+        public TokenBase CurrentToken
         {
             get
             {
-                return tokens[nextIndex];
+                return tokens[currentIndex];
             }
         }
 
-        public Token GetNextToken()
+        public TokenBase GetNextToken()
         {
-            var token = tokens[nextIndex];
-            ++nextIndex;
+            ++currentIndex;
+            var token = tokens[currentIndex];
             return token;
         }
 
         public bool HasTokens()
+        {
+            return currentIndex +1 < tokens.Count();
+        }
+
+        public void Init()
         {
             throw new NotImplementedException();
         }

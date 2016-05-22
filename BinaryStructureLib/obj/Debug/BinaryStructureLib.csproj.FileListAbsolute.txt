@@ -3,3 +3,5 @@ C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureLib\bin\Debug\Binary
 C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureLib\obj\Debug\BinaryStructureLib.dll
 C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureLib\obj\Debug\BinaryStructureLib.pdb
 C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureLib\obj\Debug\BinaryStructureLib.csprojResolveAssemblyReference.cache
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureLib\bin\Debug\UnconstrainedMelody.dll
+C:\Users\Marek\Projekty\TKOM\BinaryStructure\BinaryStructureLib\bin\Debug\UnconstrainedMelody.xml

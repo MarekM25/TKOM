@@ -5,8 +5,8 @@ using System.Text;
 
 namespace BinaryStructureLib.Structures
 {
-    class MainStructure
+    public class MainStructure
     {
-        List<Statement> statements = new List<Statement>();
+        public List<Statement> statements = new List<Statement>();
     }
 }

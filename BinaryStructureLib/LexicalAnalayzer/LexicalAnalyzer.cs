@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BinaryStructureLib.Tokens;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,14 +13,16 @@ namespace BinaryStructureLib
         private Stream stream;
         private bool hasTokens;
 
-        public Token CurrentToken { get; internal set; }
+        public TokenBase CurrentToken { get; internal set; }
 
         public LexicalAnalyzer(Stream stream)
         {
             this.stream = stream;
-            this.hasTokens = true;
+            this.hasTokens = true;    
         }
-        Token ILexicalAnalyzer.GetNextToken()
+
+
+        TokenBase ILexicalAnalyzer.GetNextToken()
         {
             string nextWord = string.Empty;
             hasTokens = stream.NextWord(out nextWord);
@@ -34,6 +37,11 @@ namespace BinaryStructureLib
         public bool HasTokens()
         {
             return hasTokens;
+        }
+
+        void ILexicalAnalyzer.Init()
+        {
+            ((ILexicalAnalyzer)this).GetNextToken();
         }
     }
 }

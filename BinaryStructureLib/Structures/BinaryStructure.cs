@@ -9,8 +9,8 @@ namespace BinaryStructureLib.Structures
     
     public class BinaryStructure
     {
-        List<StructDeclarations> stuctDeclarations = new List<StructDeclarations>();
+        public List<Structure> stuctDeclarations = new List<Structure>();
 
-        MainStructure mainStructure = new MainStructure();
+        public MainStructure mainStructure = new MainStructure();
     }
 }

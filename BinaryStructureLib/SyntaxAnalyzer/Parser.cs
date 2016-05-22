@@ -1,6 +1,7 @@
 ﻿using BinaryStructureLib.Structures;
 using BinaryStructureLib.SyntaxAnalyzer;
 using BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers;
+using BinaryStructureLib.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace BinaryStructureLib
 {
     public class Parser : IParser
     {
+        private BinaryStructure binaryStructure = new BinaryStructure();
 
         public Parser(ILexicalAnalyzer lexicalAnalyzer)
         {
@@ -19,8 +21,12 @@ namespace BinaryStructureLib
 
         public BinaryStructure Parse()
         {
-            StructParser.Parse();
-            return null;
+            while (ParserService.Accept(new TokenKeyword(Keywords.StructType)))
+            {
+                binaryStructure.stuctDeclarations.Add(StructParser.Parse());
+            }
+            binaryStructure.mainStructure = MainParser.Parse();
+            return binaryStructure;
         }
 
         //private void ParameterLists()

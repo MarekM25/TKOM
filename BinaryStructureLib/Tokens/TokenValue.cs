@@ -9,5 +9,6 @@ namespace BinaryStructureLib.Tokens
     public class TokenValue : TokenGenericBase<int>
     {
         public TokenValue(int value) : base(value) { }
+        public TokenValue() : base() { }
     }
 }

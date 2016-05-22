@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BinaryStructureLib.Tokens;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,40 +9,42 @@ namespace BinaryStructureLib
 {
     public class StringTokenMapper
     {
-        private static Dictionary<string, Token> tokensDict = new Dictionary<string, Token>()
+        private static Dictionary<string, TokenBase> tokensDict = new Dictionary<string, TokenBase>()
         {
-            { "begin", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.Begin} },
-            { "end", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.End} },
-            { "struct", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.StructType} },
-            { "int", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.IntType} },
-            { "bool", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.BoolType} },
-            { "size", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.Size} },
-            { "if", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.If} },
-            { "then", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.Then} },
-            { "else", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.Else} },
-            { "main", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.Main} },
-            { "true", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.True} },
-            { "false", new Token() { Type = TokenType.Keyword, Value = (object) Keywords.False} },
-            { "(", new Token() { Type = TokenType.Operator, Value = (object) Operators.OpeningCircleBracket } },
-            { ")", new Token() { Type = TokenType.Operator, Value = (object) Operators.ClosingCircleBracket} },
-            { "[", new Token() { Type = TokenType.Operator, Value = (object) Operators.OpeningSquareBracket} },
-            { "]", new Token() { Type = TokenType.Operator, Value = (object) Operators.ClosingSquareBracket} },
-            { ",", new Token() { Type = TokenType.Operator, Value = (object) Operators.Comma} },
-            { ";", new Token() { Type = TokenType.Operator, Value = (object) Operators.Semicolon} },
-            { "&", new Token() { Type = TokenType.Operator, Value = (object) Operators.LogicAnd} },
-            { "|", new Token() { Type = TokenType.Operator, Value = (object) Operators.LogicOr} },
-            { "!", new Token() { Type = TokenType.Operator, Value = (object) Operators.LogicNegation} },
-            { "=", new Token() { Type = TokenType.Operator, Value = (object) Operators.LogicCompare} }
+            { "begin", new TokenKeyword(Keywords.Begin) },
+            { "end", new TokenKeyword(Keywords.End) },
+            { "struct", new TokenKeyword(Keywords.StructType) },
+            { "int", new TokenKeyword(Keywords.IntType) },
+            { "bool", new TokenKeyword(Keywords.BoolType) },
+            { "size", new TokenKeyword(Keywords.Size) },
+            { "if", new TokenKeyword(Keywords.If) },
+            { "then", new TokenKeyword(Keywords.Then) },
+            { "else", new TokenKeyword(Keywords.Else) },
+            { "main", new TokenKeyword(Keywords.Main) },
+            { "true", new TokenKeyword(Keywords.True) },
+            { "false", new TokenKeyword(Keywords.False) },
+            { "(", new TokenOperator(Operators.OpeningCircleBracket ) },
+            { ")", new TokenOperator(Operators.ClosingCircleBracket) },
+            { "[", new TokenOperator(Operators.OpeningSquareBracket) },
+            { "]", new TokenOperator(Operators.ClosingSquareBracket) },
+            { ",", new TokenOperator(Operators.Comma) },
+            { ";", new TokenOperator(Operators.Semicolon) },
+            { "&", new TokenOperator(Operators.LogicAnd) },
+            { "|", new TokenOperator(Operators.LogicOr) },
+            { "!", new TokenOperator(Operators.LogicNegation) },
+            { "=", new TokenOperator(Operators.LogicCompare) },
+            { ">", new TokenOperator(Operators.Greater) },
+            { "<", new TokenOperator(Operators.Smaller) }
         };
 
-        public static Token MapStringToToken(string stringToMap)
+        public static TokenBase MapStringToToken(string stringToMap)
         {
             if (tokensDict.ContainsKey(stringToMap))
                 return tokensDict[stringToMap];
             if (System.Text.RegularExpressions.Regex.IsMatch(stringToMap, "^\\d+$"))
-                return new Token() { Type = TokenType.Value, Value = (object)stringToMap };
+                return new TokenValue(Convert.ToInt32(stringToMap));
             if (System.Text.RegularExpressions.Regex.IsMatch(stringToMap, "^[a-zA-Z][a-zA-Z0-9]*$"))
-                return new Token() { Type = TokenType.Id, Value = (object)stringToMap };
+                return new TokenId(stringToMap);
             throw new LexicalAnalyzerException(stringToMap);
         }
     }
