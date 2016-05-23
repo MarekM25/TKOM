@@ -39,7 +39,8 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
         public void BoolExpressionSimpleTest()
         {
             ParserService.Initialize(new LexicalAnalyzerMock(onlyOneBoolExpressionTokens));
-            var expression = BoolExpressionListsParser.Parse();
+            var boolExpressionListParser = new BoolExpressionListsParser();
+            var expression = boolExpressionListParser.Parse();
             var actualExpression = new Likeness<ConstantBool, ConstantBool>(expression as ConstantBool);
             Assert.AreEqual(new ConstantBool(true), actualExpression);
         }
@@ -48,7 +49,8 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
         public void OneBinaryOperatorSimpleTest()
         {
             ParserService.Initialize(new LexicalAnalyzerMock(onlyOneBinaryOperatorTokens));
-            BinaryOperator binaryOperatorExpression = BoolExpressionListsParser.Parse() as BinaryOperator;
+            var boolExpressionListParser = new BoolExpressionListsParser();
+            BinaryOperator binaryOperatorExpression = boolExpressionListParser.Parse() as BinaryOperator;
             var constantBool = new Likeness<ConstantBool, ConstantBool>(new ConstantBool(true));
             Assert.AreEqual(binaryOperatorExpression.Symbol,'&');
             Assert.AreEqual(binaryOperatorExpression.Left, constantBool);

@@ -23,7 +23,8 @@ namespace BinaryStructureLib
         {
             while (ParserService.Accept(new TokenKeyword(Keywords.StructType)))
             {
-                binaryStructure.stuctDeclarations.Add(StructParser.Parse());
+                var structParser = new StructParser();
+                binaryStructure.stuctDeclarations.Add(structParser.Parse());
             }
             binaryStructure.mainStructure = MainParser.Parse();
             return binaryStructure;

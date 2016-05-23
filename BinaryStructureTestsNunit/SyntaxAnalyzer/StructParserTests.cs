@@ -20,7 +20,7 @@ namespace BinaryStructureTestsNunit.Parser
         public void Test()
         {
             ParserService.Initialize(new LexicalAnalyzerMock(tokens));
-            StructParser.Parse();
+           // StructParser.Parse();
         } 
     }
 }

@@ -12,7 +12,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
     public class BoolExpressionListsParser
     {
 
-        private static Expression ParseBracket()
+        private Expression ParseBracket()
         {
             //token ++
             Expression expression = ParseExpression();
@@ -20,25 +20,31 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             return null;
         }
 
-        private static Expression ParseConstantBool()
+        private Expression ParseConstantBool()
         {
-            var expression = new ConstantBool(Convert.ToBoolean(ParserService.CurrentTokenValue()));
+            Keywords boolKeyword = (Keywords) ParserService.CurrentTokenValue();
+            bool value = false;
+            if (boolKeyword == Keywords.True)
+                value = true;
+            var expression = new ConstantBool(value);
             ParserService.NextToken();
             return expression;
         }
 
-        private static Expression ParseIntValue()
+        private Expression ParseIntValue()
         {
-            throw new NotImplementedException();
+            ParserService.Expect(new TokenValue());
+            return new ConstantInt((int)ParserService.PreviousTokenValue());
         }
 
-        private static Expression ParseId()
+        private Expression ParseId()
         {
-            throw new NotImplementedException();
+            ParserService.Expect(new TokenId());
+            return new VariableExpression((string)ParserService.PreviousTokenValue()); 
         }
 
 
-        private static Expression ParseTerm()
+        private Expression ParseTerm()
         {
             if (ParserService.EqualsCurrentToken(new TokenOperator(Operators.OpeningCircleBracket)))
                 return ParseBracket();
@@ -52,28 +58,35 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             return null;
         }
 
-        private static Expression ParseExpression()
+
+        private Expression ParseBinaryExpression(Expression leftExpression)
+        {
+            Operators symbol = (Operators)ParserService.PreviousTokenValue();
+            var binaryOperator = new BinaryOperator(symbol, leftExpression, ParseTerm());
+            return binaryOperator;
+        }
+
+        private Expression ParseExpression()
         {
             Expression expression = ParseTerm();      
-            if (ParserService.Accept(new TokenOperator(Operators.LogicAnd))
-                || ParserService.Accept(new TokenOperator(Operators.LogicCompare)) ||
+            if (ParserService.Accept(new TokenOperator(Operators.LogicAnd)) || 
+                ParserService.Accept(new TokenOperator(Operators.LogicCompare)) ||
                 ParserService.Accept(new TokenOperator(Operators.LogicOr)) ||
                 ParserService.Accept(new TokenOperator(Operators.Greater)) ||
                 ParserService.Accept(new TokenOperator(Operators.Smaller)))
             {
-                var binaryOperator = new BinaryOperator('&', expression, ParseTerm());
-                return binaryOperator;
+                return ParseBinaryExpression(expression);
             }
             else
                 return expression;
         }
 
 
-        public static Expression Parse()
+        public Expression Parse()
         {
             ParserService.Expect(new TokenOperator(Operators.OpeningCircleBracket));
             Expression expression = ParseExpression();
-            ParserService.Expect(new TokenOperator(Operators.OpeningCircleBracket));
+            ParserService.Expect(new TokenOperator(Operators.ClosingCircleBracket));
             return expression;
         }
     }

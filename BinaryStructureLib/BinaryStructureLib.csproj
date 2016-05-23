@@ -44,6 +44,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analyzer\Interpreter.cs" />
+    <Compile Include="Analyzer\NextInterpretedVar.cs" />
     <Compile Include="Coder.cs" />
     <Compile Include="Compiler.cs" />
     <Compile Include="Decoder.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="Enums\Operators.cs" />
     <Compile Include="Enums\TokenType.cs" />
     <Compile Include="Exceptions\LexicalAnalyzerException.cs" />
+    <Compile Include="Exceptions\SyntaxAnalyzerException.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
     <Compile Include="Extensions\StreamReaderExtensions.cs" />
     <Compile Include="LexicalAnalayzer\ILexicalAnalyzer.cs" />
@@ -79,7 +82,6 @@
     <Compile Include="SyntaxAnalyzer\ComponentsParsers\OwnTypeDeclarationParser.cs" />
     <Compile Include="SyntaxAnalyzer\ComponentsParsers\ParameterParser.cs" />
     <Compile Include="SyntaxAnalyzer\ComponentsParsers\ParameterListParser.cs" />
-    <Compile Include="SyntaxAnalyzer\ComponentsParsers\BlockParser2.cs" />
     <Compile Include="SyntaxAnalyzer\ComponentsParsers\VariableDeclarationParser.cs" />
     <Compile Include="SyntaxAnalyzer\IParser.cs" />
     <Compile Include="SyntaxAnalyzer\Parser.cs" />

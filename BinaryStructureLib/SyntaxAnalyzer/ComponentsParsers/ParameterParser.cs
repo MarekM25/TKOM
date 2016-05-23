@@ -10,7 +10,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 {
     public class ParameterParser
     {
-        public static Parameter Parse()
+        public Parameter Parse()
         {
             Parameter parameter = new Parameter();
             if (ParserService.Accept(new TokenKeyword(Keywords.IntType)))

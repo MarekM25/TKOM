@@ -8,11 +8,11 @@ namespace BinaryStructureLib.Structures.ConditionExpression
 {
     public class BinaryOperator : Expression
     {
-        public char Symbol { get; set; }
+        public Operators Symbol { get; set; }
         public Expression Left { get; set; }
         public Expression Right { get; set; }
 
-        public BinaryOperator(char symbol, Expression left, Expression right)
+        public BinaryOperator(Operators symbol, Expression left, Expression right)
         {
             this.Symbol = symbol;
             this.Left = left;
@@ -24,13 +24,13 @@ namespace BinaryStructureLib.Structures.ConditionExpression
         {
             switch (Symbol)
             {
-                case '&':
+                case Operators.LogicAnd:
                         return Left.Evaluate() && Right.Evaluate();
-                case '|':
+                case Operators.LogicOr:
                     return Left.Evaluate() || Right.Evaluate();
-                case '<':
+                case Operators.Smaller:
                     return (Left as IGenericValue<int>).Value < (Right as IGenericValue<int>).Value;
-                case '>':
+                case Operators.Greater:
                     return (Left as IGenericValue<int>).Value > (Right as IGenericValue<int>).Value;
                 default:
                     return (Left as IGenericValue<int>).Value == (Right as IGenericValue<int>).Value;

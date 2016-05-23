@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.LexicalAnalayzer;
+﻿using BinaryStructureLib.Exceptions;
+using BinaryStructureLib.LexicalAnalayzer;
 using BinaryStructureLib.Structures;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,11 @@ namespace BinaryStructureLib
             catch (LexicalAnalyzerException lexException)
             {
                 Error = lexException.Message;
+                return false;
+            }
+            catch (SyntaxAnalyzerException syntaxException)
+            {
+                Error = syntaxException.Message;
                 return false;
             }
             catch (Exception ex)

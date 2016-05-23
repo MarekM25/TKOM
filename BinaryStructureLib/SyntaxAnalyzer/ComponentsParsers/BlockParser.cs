@@ -10,13 +10,14 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 {
     public class BlockParser
     {
-        public static List<Statement> Parse()
+        public List<Statement> Parse()
         {
             List<Statement> statements = new List<Statement>();
             ParserService.Expect(new TokenKeyword(Keywords.Begin));
             while (!ParserService.EqualsCurrentToken(new TokenKeyword(Keywords.End)))
             {
-                statements.Add(StatementParser.Parse());
+                var statementParser = new StatementParser();
+                statements.Add(statementParser.Parse());
             }
             ParserService.Expect(new TokenKeyword(Keywords.End));
             return statements;

@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Tokens;
+﻿using BinaryStructureLib.Exceptions;
+using BinaryStructureLib.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,12 +66,10 @@ namespace BinaryStructureLib.SyntaxAnalyzer
         //    return false;
         //}
 
-        public static bool Expect<T>(T token) where T : TokenBase
+        public static void Expect<T>(T token) where T : TokenBase
         {
-            if (Accept(token))
-                return true;
-            //Parse exception//error("expect: unexpected symbol");
-            return false;
+            if (!Accept(token))
+                throw new SyntaxAnalyzerException(token, lexicalAnalyzer.CurrentToken);
         }
         //public static bool Expect(Keywords keyword)
         //{

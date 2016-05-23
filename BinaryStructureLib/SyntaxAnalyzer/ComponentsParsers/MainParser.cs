@@ -18,7 +18,8 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             ParserService.Expect(new TokenKeyword(Keywords.StructType));
             ParserService.Expect(new TokenOperator(Operators.OpeningCircleBracket));
             ParserService.Expect(new TokenOperator(Operators.ClosingCircleBracket));
-            mainStructure.statements = BlockParser.Parse();
+            var mainBlockParser = new BlockParser();
+            mainStructure.statements = mainBlockParser.Parse();
             return mainStructure;
         }
     }

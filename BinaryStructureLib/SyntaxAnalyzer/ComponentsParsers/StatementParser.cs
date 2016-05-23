@@ -11,14 +11,14 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 {
     public class StatementParser
     {
-        private static Statement statement;
+        private Statement statement;
 
-        private static TokenBase firstToken;
-        private static TokenBase secondToken;
-        private static TokenBase thirdToken;
+        private TokenBase firstToken;
+        private TokenBase secondToken;
+        private TokenBase thirdToken;
 
 
-        public static Statement Parse()
+        public Statement Parse()
         {
             firstToken = ParserService.CurrentToken();
             if (firstToken.Equals(Keywords.If))
@@ -31,18 +31,19 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
                     ParsetArrayType();
                 else
                     ParseSimpleType();
+                ParserService.Expect(new TokenOperator(Operators.Semicolon));
             }
-            ParserService.Expect(new TokenOperator(Operators.Semicolon));
             return statement;
         }
 
-        private static void ParseIfStatement()
+        private void ParseIfStatement()
         {
-            statement = IfStatementParser.Parse();
+            var ifStatementParser = new IfStatementParser();
+            statement = ifStatementParser.Parse();
         }
 
 
-        private static void ParseSimpleType()
+        private void ParseSimpleType()
         {
             if (firstToken.Equals(Keywords.IntType))
                 ParseSimpleIntType();
@@ -50,31 +51,24 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
                 ParseSimpleOwnType();
         }
 
-        private static void ParseSimpleOwnType()
+        private void ParseSimpleOwnType()
         {
-            OwnTypeDeclaration ownTypeDeclaration = new OwnTypeDeclaration();
-            ownTypeDeclaration.TypeName = (string)firstToken.GetValue();
-            ownTypeDeclaration.Name = (string)secondToken.GetValue();
-            if (!ParserService.Accept(new TokenKeyword(Keywords.Size)))
-                throw new NotImplementedException();
-            ParserService.Expect(new TokenValue());
-            ownTypeDeclaration.Size = (int)ParserService.PreviousTokenValue();
-            statement = ownTypeDeclaration;
+            OwnTypeDeclarationParser ownTypeDeclarationParser = new OwnTypeDeclarationParser();
+            statement = ownTypeDeclarationParser.ParseSimpleOwnType(firstToken,secondToken);
         }
 
-        private static void ParseSimpleIntType()
+        private void ParseSimpleIntType()
         {
             VariableDeclaration varDeclaration = new VariableDeclaration();
             varDeclaration.Type = Keywords.IntType;
             varDeclaration.Name = (string)secondToken.GetValue();
-            if (!ParserService.Accept(new TokenKeyword(Keywords.Size)))
-                throw new NotImplementedException();
+            ParserService.Expect(new TokenKeyword(Keywords.Size));
             ParserService.Expect(new TokenValue());
             varDeclaration.Size = (int)ParserService.PreviousTokenValue();
             statement = varDeclaration;
         }
 
-        private static void ParsetArrayType()
+        private void ParsetArrayType()
         {
             if (firstToken.Equals(Keywords.IntType))
                 ParseArrayIntType();
@@ -82,20 +76,19 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
                 ParseArrayOwnType();
         }
 
-        private static void ParseArrayOwnType()
+        private void ParseArrayOwnType()
         {
             OwnTypeDeclaration ownTypeDeclaration = new OwnTypeDeclaration();
             ownTypeDeclaration.TypeName = (string)firstToken.GetValue();
             ownTypeDeclaration.Name = (string)secondToken.GetValue();
-            if (!ParserService.Accept(new TokenKeyword(Keywords.Size)))
-                throw new NotImplementedException();
+            ParserService.Expect(new TokenKeyword(Keywords.Size));
             ParserService.Expect(new TokenValue());
             ownTypeDeclaration.Size = (int)ParserService.PreviousTokenValue();
             //GetParameterLists
             statement = ownTypeDeclaration;
         }
 
-        private static void ParseArrayIntType()
+        private void ParseArrayIntType()
         {
             ArrayVariableDeclaration arrayDeclaration = new ArrayVariableDeclaration();
             arrayDeclaration.Type = Keywords.IntType;

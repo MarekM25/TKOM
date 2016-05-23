@@ -6,7 +6,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 {
     public class ParameterListParser
     {
-        public static List<Parameter> Parse()
+        public List<Parameter> Parse()
         {
             List<Parameter> listOfParameters = new List<Parameter>();
             ParserService.Expect(new TokenOperator(Operators.OpeningCircleBracket));
@@ -17,7 +17,8 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             }
             do
             {
-                var parameter = ParameterParser.Parse();
+                var parameterParser = new ParameterParser();
+                var parameter = parameterParser.Parse();
                 listOfParameters.Add(parameter);
             }
             while (ParserService.Accept(new TokenOperator(Operators.Comma)));
