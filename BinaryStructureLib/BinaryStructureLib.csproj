@@ -52,9 +52,14 @@
     <Compile Include="Enums\TokenType.cs" />
     <Compile Include="Exceptions\LexicalAnalyzerException.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />
+    <Compile Include="Extensions\StreamReaderExtensions.cs" />
     <Compile Include="LexicalAnalayzer\ILexicalAnalyzer.cs" />
+    <Compile Include="LexicalAnalayzer\INextTokenStringReader.cs" />
     <Compile Include="LexicalAnalayzer\LexicalAnalyzer.cs" />
+    <Compile Include="LexicalAnalayzer\NextTokenStringReader.cs" />
+    <Compile Include="LexicalAnalayzer\Scanner.cs" />
     <Compile Include="LexicalAnalayzer\StringTokenMapper.cs" />
+    <Compile Include="LexicalAnalayzer\TokenStringMapper.cs" />
     <Compile Include="Structures\ConditionExpression\BinaryOperator.cs" />
     <Compile Include="Structures\ConditionExpression\ConditionExpression.cs" />
     <Compile Include="Structures\ConditionExpression\ConstantBool.cs" />

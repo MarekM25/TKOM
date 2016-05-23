@@ -17,7 +17,7 @@ namespace BinaryStructure
             if (args.Count() == 1)
             {
                 var stream = System.IO.File.OpenRead(args[0]);
-                Compiler compiler = new Compiler(stream);
+                Compiler compiler = new Compiler(new StreamReader(stream));
                 bool success = compiler.Compile();
                 if (success == false)
                 {

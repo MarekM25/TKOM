@@ -41,7 +41,7 @@ namespace BinaryStructureTestsNunit
         public bool OperatorKeywordEqualTest()
         {
             var firstToken = new TokenOperator(Operators.LogicNegation);
-            var secondToken = new TokenKeyword(Keywords.Then);
+            var secondToken = new TokenKeyword(Keywords.If);
             return firstToken.Equals(secondToken);
         }
 

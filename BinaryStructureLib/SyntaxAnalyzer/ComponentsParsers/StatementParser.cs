@@ -100,8 +100,16 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             ArrayVariableDeclaration arrayDeclaration = new ArrayVariableDeclaration();
             arrayDeclaration.Type = Keywords.IntType;
             arrayDeclaration.Name = (string)secondToken.GetValue();
-            ParserService.Expect(new TokenValue());
-            arrayDeclaration.Length = (int)ParserService.PreviousTokenValue();
+            if (ParserService.Accept(new TokenValue()))
+            {
+                arrayDeclaration.Length = (int)ParserService.PreviousTokenValue();
+                arrayDeclaration.HasLengthValue = true;
+            }
+            else if (ParserService.Accept(new TokenId()))
+            {
+                arrayDeclaration.LengthVariableName = (string)ParserService.PreviousTokenValue();
+                arrayDeclaration.HasLengthValue = false;
+            }
             ParserService.Expect(new TokenOperator(Operators.ClosingSquareBracket));
             ParserService.Expect(new TokenKeyword(Keywords.Size));
             ParserService.Expect(new TokenValue());

@@ -4,14 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BinaryStructureLib
+namespace BinaryStructureLib.Extensions
 {
     public static class CharExtensions
     {
-        public static char[] tokenWordChars = new char[] { ';', '(', ')', '[', ']', ',', '&','|','=', '!'};
+        public static char[] operatorsChars = new char[] { ';', '(', ')', '[', ']', ',', '&','|','=', '!','<','>'};
         public static bool IsTokenWordChar(this char character)
         {
-            return tokenWordChars.Contains(character);
+            return operatorsChars.Contains(character);
+        }
+
+        public static bool IsOperatorChar(this char character)
+        {
+            return operatorsChars.Contains(character);
         }
     }
 }

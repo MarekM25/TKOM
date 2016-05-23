@@ -9,7 +9,6 @@
         BoolType,
         Size,
         If,
-        Then,
         Else,
         Main,
         True,

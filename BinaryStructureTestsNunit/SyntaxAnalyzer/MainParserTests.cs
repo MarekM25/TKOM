@@ -2,7 +2,6 @@
 using BinaryStructureLib.SyntaxAnalyzer;
 using BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers;
 using BinaryStructureLib.Tokens;
-using BinaryStructureTestsNunit.LexicalAnalyzer;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

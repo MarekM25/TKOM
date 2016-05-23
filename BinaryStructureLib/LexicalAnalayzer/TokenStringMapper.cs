@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BinaryStructureLib
+namespace BinaryStructureLib.LexicalAnalayzer
 {
-    public class StringTokenMapper
+    public class TokenStringMapper
     {
         private static Dictionary<string, TokenBase> tokensDict = new Dictionary<string, TokenBase>()
         {
@@ -36,15 +36,23 @@ namespace BinaryStructureLib
             { "<", new TokenOperator(Operators.Smaller) }
         };
 
-        public static TokenBase MapStringToToken(string stringToMap)
+        private INextTokenStringReader nextTokenStringReader;
+
+        public TokenStringMapper(INextTokenStringReader nextTokenStringReader)
         {
-            if (tokensDict.ContainsKey(stringToMap))
-                return tokensDict[stringToMap];
-            if (System.Text.RegularExpressions.Regex.IsMatch(stringToMap, "^\\d+$"))
-                return new TokenValue(Convert.ToInt32(stringToMap));
-            if (System.Text.RegularExpressions.Regex.IsMatch(stringToMap, "^[a-zA-Z][a-zA-Z0-9]*$"))
-                return new TokenId(stringToMap);
-            throw new LexicalAnalyzerException(stringToMap);
+            this.nextTokenStringReader = nextTokenStringReader;
+        }
+
+        public TokenBase MapNextWord()
+        {
+            string nextWord = nextTokenStringReader.ReadNextTokenStringWord();
+            if (tokensDict.ContainsKey(nextWord))
+                return tokensDict[nextWord];
+            if (nextTokenStringReader.IsCurrentDigitsOnly)
+                return new TokenValue(Convert.ToInt32(nextWord));
+            if (nextTokenStringReader.IsCurrentDigitsOrLettersOnly)
+                return new TokenId(nextWord);
+            throw new LexicalAnalyzerException(nextWord);
         }
     }
 }

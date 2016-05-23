@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers;
 using BinaryStructureLib.SyntaxAnalyzer;
-using BinaryStructureTestsNunit.LexicalAnalyzer;
 using BinaryStructureLib;
 using BinaryStructureLib.Tokens;
 

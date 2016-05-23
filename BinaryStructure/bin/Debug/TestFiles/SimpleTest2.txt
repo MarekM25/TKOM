@@ -1,0 +1,10 @@
+struct nazwaStruktury(int parameter1, int parameter2, bool boolParamaeter)
+begin
+	int zmienna4 size 8;
+end
+
+main struct()
+begin
+	int zmienna1 size 8;
+	int zmienna2 size 8;
+end

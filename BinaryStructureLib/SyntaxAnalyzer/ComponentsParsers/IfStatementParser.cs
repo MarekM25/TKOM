@@ -10,10 +10,9 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 {
     public class IfStatementParser
     {
-        private static IfStatement ifStatement;
-
         public static IfStatement Parse()
         {
+            IfStatement ifStatement = new IfStatement();
             ifStatement.condition = BoolExpressionListsParser.Parse();
             ifStatement.statements = BlockParser.Parse();
             if (ParserService.Accept(new TokenKeyword(Keywords.Else)))

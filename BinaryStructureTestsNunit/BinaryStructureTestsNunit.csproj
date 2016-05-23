@@ -50,7 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interpreter\BoolExpressionInterpreterTests.cs" />
-    <Compile Include="LexicalAnalyzer\LexicalAnalyzerMock.cs" />
+    <Compile Include="LexicalAnalyzerMock.cs" />
+    <Compile Include="LexicalAnalyzer\NextStringTokenReaderMock.cs" />
+    <Compile Include="LexicalAnalyzer\NextStringTokenReaderTests.cs" />
+    <Compile Include="LexicalAnalyzer\TokenStringMapperTests.cs" />
     <Compile Include="SyntaxAnalyzer\BinaryStructureParserTests.cs" />
     <Compile Include="SyntaxAnalyzer\BoolExpressionParameterListsParser.cs" />
     <Compile Include="SyntaxAnalyzer\MainParserTests.cs" />

@@ -9,5 +9,7 @@ namespace BinaryStructureLib.Structures.Statements
     public class ArrayVariableDeclaration : VariableDeclaration
     {
         public int Length { get; set; }
+        public string LengthVariableName { get; set; }
+        public bool HasLengthValue { get; set; }
     }
 }

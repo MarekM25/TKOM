@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Structures;
+﻿using BinaryStructureLib.LexicalAnalayzer;
+using BinaryStructureLib.Structures;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,8 +11,8 @@ namespace BinaryStructureLib
 {
     public class Compiler
     {
-        Stream stream;
-        public Compiler(Stream stream)
+        StreamReader stream;
+        public Compiler(StreamReader stream)
         {
             this.stream = stream;
         }
@@ -23,7 +24,7 @@ namespace BinaryStructureLib
         {
             try
             {
-                ILexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(stream);
+                ILexicalAnalyzer lexicalAnalyzer = new Scanner(stream);
                 lexicalAnalyzer.Init();
                 IParser parser = new Parser(lexicalAnalyzer);
                 Result = parser.Parse();
