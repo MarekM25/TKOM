@@ -22,7 +22,9 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
         public OwnTypeDeclaration ParseSimpleOwnType(TokenBase firstToken, TokenBase secondToken)
         {
             ownTypeDeclaration.TypeName = (string)firstToken.GetValue();
-            ownTypeDeclaration.Name = (string)secondToken.GetValue();
+            var variableName = (string)secondToken.GetValue();
+            parserService.AddNewVariableName(variableName);
+            ownTypeDeclaration.Name = variableName;
             OwnTypeParametersList();
             return ownTypeDeclaration;
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BinaryStructureLib
 {
-    public class LexicalAnalyzerException : Exception
+    public class LexicalAnalyzerException : CompilerException
     {
         public LexicalAnalyzerException() : base() { }
         public LexicalAnalyzerException(string word) 

@@ -53,6 +53,8 @@
     <Compile Include="Enums\Keywords.cs" />
     <Compile Include="Enums\Operators.cs" />
     <Compile Include="Enums\TokenType.cs" />
+    <Compile Include="Exceptions\CompilerException.cs" />
+    <Compile Include="Exceptions\InterpreterException.cs" />
     <Compile Include="Exceptions\LexicalAnalyzerException.cs" />
     <Compile Include="Exceptions\SyntaxAnalyzerException.cs" />
     <Compile Include="Extensions\CharExtensions.cs" />

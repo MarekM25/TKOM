@@ -10,6 +10,6 @@ namespace BinaryStructureLib
     public class StructureBase
     {
         public List<Statement> Statements;
-        public List<string> Variables = new List<string>();
+        public Dictionary<string, object> Variables = new Dictionary<string, object>();
     }
 }

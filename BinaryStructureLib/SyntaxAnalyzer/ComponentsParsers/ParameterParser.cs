@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Structures;
+﻿using BinaryStructureLib.Exceptions;
+using BinaryStructureLib.Structures;
 using BinaryStructureLib.Tokens;
 using System;
 using System.Collections.Generic;
@@ -25,12 +26,11 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             else if (parserService.Accept(new TokenKeyword(Keywords.BoolType)))
                 parameter.Type = Keywords.BoolType;
             else
-            {
-                //error
-                return null;
-            }
+                throw new SyntaxAnalyzerException(parserService.CurrentToken(),"Nieoczekiwany typ.");
             parserService.Expect(new TokenId());
-            parameter.Name = (string)parserService.PreviousTokenValue();
+            var variableName = (string)parserService.PreviousTokenValue();
+            parserService.AddNewVariableName(variableName);
+            parameter.Name = variableName;
             return parameter;
         }
     }

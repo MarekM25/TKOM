@@ -68,7 +68,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             VariableDeclaration varDeclaration = new VariableDeclaration();
             varDeclaration.Type = Keywords.IntType;
             var variableName = (string)secondToken.GetValue();
-            parserService.AddNewVariableName();
+            parserService.AddNewVariableName(variableName);
             varDeclaration.Name = variableName;
             parserService.Expect(new TokenKeyword(Keywords.Size));
             parserService.Expect(new TokenValue());
@@ -100,7 +100,9 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
         {
             ArrayVariableDeclaration arrayDeclaration = new ArrayVariableDeclaration();
             arrayDeclaration.Type = Keywords.IntType;
-            arrayDeclaration.Name = (string)secondToken.GetValue();
+            var variableName = (string)secondToken.GetValue();
+            parserService.AddNewVariableName(variableName);
+            arrayDeclaration.Name = variableName;
             if (parserService.Accept(new TokenValue()))
             {
                 arrayDeclaration.Length = (int)parserService.PreviousTokenValue();
