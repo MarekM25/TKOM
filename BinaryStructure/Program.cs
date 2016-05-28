@@ -14,8 +14,6 @@ namespace BinaryStructure
         static void Main(string[] args)
         {
             BinaryStructureLib.Structures.BinaryStructure test = new BinaryStructureLib.Structures.BinaryStructure();
-            InterpreterService interpreter = new InterpreterService(test);
-            interpreter.TestMethod();
             if (args == null || args.Count() == 0)
                 Console.WriteLine("Zbyt mało argumentów wejściowych");
             if (args.Count() == 1)

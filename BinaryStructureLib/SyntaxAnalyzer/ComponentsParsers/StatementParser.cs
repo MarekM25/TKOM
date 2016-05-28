@@ -17,28 +17,34 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
         private TokenBase firstToken;
         private TokenBase secondToken;
         private TokenBase thirdToken;
+        private ParserService parserService;
+
+        public StatementParser(ParserService parserService)
+        {
+            this.parserService = parserService;
+        }
 
         public Statement Parse()
         {
-            firstToken = ParserService.CurrentToken();
+            firstToken = parserService.CurrentToken();
             if (firstToken.Equals(Keywords.If))
                 ParseIfStatement();
             else
             {
-                secondToken = ParserService.NextToken();
-                thirdToken = ParserService.NextToken();
-                if (ParserService.Accept(new TokenOperator(Operators.OpeningSquareBracket)))
+                secondToken = parserService.NextToken();
+                thirdToken = parserService.NextToken();
+                if (parserService.Accept(new TokenOperator(Operators.OpeningSquareBracket)))
                     ParsetArrayType();
                 else
                     ParseSimpleType();
-                ParserService.Expect(new TokenOperator(Operators.Semicolon));
+                parserService.Expect(new TokenOperator(Operators.Semicolon));
             }
             return statement;
         }
 
         private void ParseIfStatement()
         {
-            var ifStatementParser = new IfStatementParser();
+            var ifStatementParser = new IfStatementParser(parserService);
             statement = ifStatementParser.Parse();
         }
 
@@ -53,7 +59,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 
         private void ParseSimpleOwnType()
         {
-            OwnTypeDeclarationParser ownTypeDeclarationParser = new OwnTypeDeclarationParser();
+            OwnTypeDeclarationParser ownTypeDeclarationParser = new OwnTypeDeclarationParser(parserService);
             statement = ownTypeDeclarationParser.ParseSimpleOwnType(firstToken,secondToken);
         }
 
@@ -62,9 +68,9 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             VariableDeclaration varDeclaration = new VariableDeclaration();
             varDeclaration.Type = Keywords.IntType;
             varDeclaration.Name = (string)secondToken.GetValue();
-            ParserService.Expect(new TokenKeyword(Keywords.Size));
-            ParserService.Expect(new TokenValue());
-            varDeclaration.Size = (int)ParserService.PreviousTokenValue();
+            parserService.Expect(new TokenKeyword(Keywords.Size));
+            parserService.Expect(new TokenValue());
+            varDeclaration.Size = (int)parserService.PreviousTokenValue();
             statement = varDeclaration;
         }
 
@@ -81,9 +87,9 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             OwnTypeDeclaration ownTypeDeclaration = new OwnTypeDeclaration();
             ownTypeDeclaration.TypeName = (string)firstToken.GetValue();
             ownTypeDeclaration.Name = (string)secondToken.GetValue();
-            ParserService.Expect(new TokenKeyword(Keywords.Size));
-            ParserService.Expect(new TokenValue());
-            ownTypeDeclaration.Size = (int)ParserService.PreviousTokenValue();
+            parserService.Expect(new TokenKeyword(Keywords.Size));
+            parserService.Expect(new TokenValue());
+            ownTypeDeclaration.Size = (int)parserService.PreviousTokenValue();
             //GetParameterLists
             statement = ownTypeDeclaration;
         }
@@ -93,20 +99,20 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             ArrayVariableDeclaration arrayDeclaration = new ArrayVariableDeclaration();
             arrayDeclaration.Type = Keywords.IntType;
             arrayDeclaration.Name = (string)secondToken.GetValue();
-            if (ParserService.Accept(new TokenValue()))
+            if (parserService.Accept(new TokenValue()))
             {
-                arrayDeclaration.Length = (int)ParserService.PreviousTokenValue();
+                arrayDeclaration.Length = (int)parserService.PreviousTokenValue();
                 arrayDeclaration.HasLengthValue = true;
             }
-            else if (ParserService.Accept(new TokenId()))
+            else if (parserService.Accept(new TokenId()))
             {
-                arrayDeclaration.LengthVariableName = (string)ParserService.PreviousTokenValue();
+                arrayDeclaration.LengthVariableName = (string)parserService.PreviousTokenValue();
                 arrayDeclaration.HasLengthValue = false;
             }
-            ParserService.Expect(new TokenOperator(Operators.ClosingSquareBracket));
-            ParserService.Expect(new TokenKeyword(Keywords.Size));
-            ParserService.Expect(new TokenValue());
-            arrayDeclaration.Size = (int)ParserService.PreviousTokenValue();
+            parserService.Expect(new TokenOperator(Operators.ClosingSquareBracket));
+            parserService.Expect(new TokenKeyword(Keywords.Size));
+            parserService.Expect(new TokenValue());
+            arrayDeclaration.Size = (int)parserService.PreviousTokenValue();
             statement = arrayDeclaration;
         }
     }

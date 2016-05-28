@@ -11,20 +11,29 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 {
     public class IfStatementParser
     {
-        private BoolExpressionListsParser conditionParser = new BoolExpressionListsParser();
-        private BlockParser ifBlockParser = new BlockParser();
-        private BlockParser elseBlockParser = new BlockParser();
+        private BoolExpressionListsParser conditionParser;
+        private BlockParser ifBlockParser;
+        private BlockParser elseBlockParser;
+        private ParserService parserService;
+
+        public IfStatementParser(ParserService parserService)
+        {
+            this.parserService = parserService;
+            this.conditionParser = new BoolExpressionListsParser(parserService);
+            this.ifBlockParser = new BlockParser(parserService);
+            this.elseBlockParser = new BlockParser(parserService);
+    }
 
         public IfStatement Parse()
         {
             IfStatement ifStatement = new IfStatement();
-            ParserService.Expect(new TokenKeyword(Keywords.If));
+            parserService.Expect(new TokenKeyword(Keywords.If));
             ifStatement.condition = conditionParser.Parse();
             ifStatement.statements = ifBlockParser.Parse();
-            if (ParserService.Accept(new TokenKeyword(Keywords.Else)))
+            if (parserService.Accept(new TokenKeyword(Keywords.Else)))
             {
                 ifStatement.hasAlternatives = true;
-                var elseBlockParser = new BlockParser();
+                var elseBlockParser = new BlockParser(parserService);
                 ifStatement.alternativeStatements = elseBlockParser.Parse();
             }
             return ifStatement;

@@ -12,14 +12,20 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
     public class MainParser
     {
         private static MainStructure mainStructure = new MainStructure();
+        private ParserService parserService;
 
-        public static MainStructure Parse()
+        public MainParser(ParserService parserService)
         {
-            ParserService.Expect(new TokenKeyword(Keywords.Main));
-            ParserService.Expect(new TokenKeyword(Keywords.StructType));
-            ParserService.Expect(new TokenOperator(Operators.OpeningCircleBracket));
-            ParserService.Expect(new TokenOperator(Operators.ClosingCircleBracket));
-            var mainBlockParser = new BlockParser();
+            this.parserService = parserService;
+        }
+
+        public MainStructure Parse()
+        {
+            parserService.Expect(new TokenKeyword(Keywords.Main));
+            parserService.Expect(new TokenKeyword(Keywords.StructType));
+            parserService.Expect(new TokenOperator(Operators.OpeningCircleBracket));
+            parserService.Expect(new TokenOperator(Operators.ClosingCircleBracket));
+            var mainBlockParser = new BlockParser(parserService);
             mainStructure.Statements = mainBlockParser.Parse();
             return mainStructure;
         }

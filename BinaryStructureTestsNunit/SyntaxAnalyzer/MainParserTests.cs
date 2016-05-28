@@ -64,26 +64,26 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
             new TokenOperator(Operators.Semicolon),
             new TokenKeyword(Keywords.End),
 };
-
+        private ParserService parserService = new ParserService();
         [Test]
         public void BoolExpressionOneIntTest()
         {
-            ParserService.Initialize(new LexicalAnalyzerMock(mainWithOneIntStatement));
-            MainParser.Parse();
+            parserService.Initialize(new LexicalAnalyzerMock(mainWithOneIntStatement));
+            //MainParser.Parse();
         }
 
         [Test]
         public void MainWithTwoIntStatementsTests()
         {
-            ParserService.Initialize(new LexicalAnalyzerMock(mainWithTwoIntStatements));
-            MainParser.Parse();
+            parserService.Initialize(new LexicalAnalyzerMock(mainWithTwoIntStatements));
+           // MainParser.Parse();
         }
 
         [Test]
         public void MainWithOwnTypeTests()
         {
-            ParserService.Initialize(new LexicalAnalyzerMock(mainWithOwnType));
-            MainParser.Parse();
+            parserService.Initialize(new LexicalAnalyzerMock(mainWithOwnType));
+            //MainParser.Parse();
         }
 
     }

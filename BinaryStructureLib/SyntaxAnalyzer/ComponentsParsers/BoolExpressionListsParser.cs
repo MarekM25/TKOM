@@ -12,48 +12,55 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 {
     public class BoolExpressionListsParser
     {
+        private ParserService parserService;
+
+        public BoolExpressionListsParser(ParserService parserService)
+        {
+            this.parserService = parserService;
+        }
+
         private Expression ParseBracket()
         {
             //token ++
             Expression expression = ParseExpression();
-            ParserService.Expect(new TokenOperator(Operators.ClosingCircleBracket));
+            parserService.Expect(new TokenOperator(Operators.ClosingCircleBracket));
             return null;
         }
 
         private Expression ParseConstantBool()
         {
-            Keywords boolKeyword = (Keywords) ParserService.CurrentTokenValue();
+            Keywords boolKeyword = (Keywords) parserService.CurrentTokenValue();
             bool value = false;
             if (boolKeyword == Keywords.True)
                 value = true;
             var expression = new ConstantBool(value);
-            ParserService.NextToken();
+            parserService.NextToken();
             return expression;
         }
 
         private Expression ParseIntValue()
         {
-            ParserService.Expect(new TokenValue());
-            return new ConstantInt((int)ParserService.PreviousTokenValue());
+            parserService.Expect(new TokenValue());
+            return new ConstantInt((int)parserService.PreviousTokenValue());
         }
 
         private Expression ParseId()
         {
-            ParserService.Expect(new TokenId());
-            return new VariableExpression((string)ParserService.PreviousTokenValue()); 
+            parserService.Expect(new TokenId());
+            return new VariableExpression((string)parserService.PreviousTokenValue()); 
         }
 
 
         private Expression ParseTerm()
         {
-            if (ParserService.EqualsCurrentToken(new TokenOperator(Operators.OpeningCircleBracket)))
+            if (parserService.EqualsCurrentToken(new TokenOperator(Operators.OpeningCircleBracket)))
                 return ParseBracket();
-            if (ParserService.EqualsCurrentToken(new TokenKeyword(Keywords.True))
-                || ParserService.EqualsCurrentToken(new TokenKeyword(Keywords.False)))
+            if (parserService.EqualsCurrentToken(new TokenKeyword(Keywords.True))
+                || parserService.EqualsCurrentToken(new TokenKeyword(Keywords.False)))
                 return ParseConstantBool();
-            if (ParserService.EqualsCurrentToken(new TokenValue()))
+            if (parserService.EqualsCurrentToken(new TokenValue()))
                 return ParseIntValue();
-            if (ParserService.EqualsCurrentToken(new TokenId()))
+            if (parserService.EqualsCurrentToken(new TokenId()))
                 return ParseId();
             return null;
         }
@@ -61,7 +68,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 
         private Expression ParseBinaryExpression(Expression leftExpression)
         {
-            Operators symbol = (Operators)ParserService.PreviousTokenValue();
+            Operators symbol = (Operators)parserService.PreviousTokenValue();
             var binaryOperator = new BinaryOperator(symbol, leftExpression, ParseTerm());
             return binaryOperator;
         }
@@ -69,11 +76,11 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
         private Expression ParseExpression()
         {
             Expression expression = ParseTerm();      
-            if (ParserService.Accept(new TokenOperator(Operators.LogicAnd)) || 
-                ParserService.Accept(new TokenOperator(Operators.LogicCompare)) ||
-                ParserService.Accept(new TokenOperator(Operators.LogicOr)) ||
-                ParserService.Accept(new TokenOperator(Operators.Greater)) ||
-                ParserService.Accept(new TokenOperator(Operators.Smaller)))
+            if (parserService.Accept(new TokenOperator(Operators.LogicAnd)) || 
+                parserService.Accept(new TokenOperator(Operators.LogicCompare)) ||
+                parserService.Accept(new TokenOperator(Operators.LogicOr)) ||
+                parserService.Accept(new TokenOperator(Operators.Greater)) ||
+                parserService.Accept(new TokenOperator(Operators.Smaller)))
             {
                 return ParseBinaryExpression(expression);
             }
@@ -84,9 +91,9 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 
         public Expression Parse()
         {
-            ParserService.Expect(new TokenOperator(Operators.OpeningCircleBracket));
+            parserService.Expect(new TokenOperator(Operators.OpeningCircleBracket));
             Expression expression = ParseExpression();
-            ParserService.Expect(new TokenOperator(Operators.ClosingCircleBracket));
+            parserService.Expect(new TokenOperator(Operators.ClosingCircleBracket));
             return expression;
         }
     }

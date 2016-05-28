@@ -12,13 +12,21 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
     public class StructParser
     {
         private Structure structure = new Structure();
-        private ParameterListParser parameterListParser = new ParameterListParser();
-        private BlockParser structBlockParser = new BlockParser();
+        private ParameterListParser parameterListParser;
+        private BlockParser structBlockParser;
+        private ParserService parserService;
+
+        public StructParser(ParserService parserService)
+        {
+            this.parserService = parserService;
+            this. parameterListParser = new ParameterListParser(parserService);
+            this.structBlockParser = new BlockParser(parserService);
+        }
 
         public Structure Parse()
         {
-            ParserService.Expect(new TokenId());
-            structure.Name = (string)ParserService.PreviousTokenValue();
+            parserService.Expect(new TokenId());
+            structure.Name = (string)parserService.PreviousTokenValue();
             structure.Parameters = parameterListParser.Parse();
             structure.Statements = structBlockParser.Parse();
             return structure;

@@ -11,16 +11,23 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 {
     public class BlockParser
     {
+        private ParserService parserService;
+
+        public BlockParser(ParserService parserService)
+        {
+            this.parserService = parserService;
+        }
+
         public List<Statement> Parse()
         {
             List<Statement> statements = new List<Statement>();
-            ParserService.Expect(new TokenKeyword(Keywords.Begin));
-            while (!ParserService.EqualsCurrentToken(new TokenKeyword(Keywords.End)))
+            parserService.Expect(new TokenKeyword(Keywords.Begin));
+            while (!parserService.EqualsCurrentToken(new TokenKeyword(Keywords.End)))
             {
-                var statementParser = new StatementParser();
+                var statementParser = new StatementParser(parserService);
                 statements.Add(statementParser.Parse());
             }
-            ParserService.Expect(new TokenKeyword(Keywords.End));
+            parserService.Expect(new TokenKeyword(Keywords.End));
             return statements;
         }
     }

@@ -14,57 +14,22 @@ namespace BinaryStructureLib
     public class Parser : IParser
     {
         private BinaryStructure binaryStructure = new BinaryStructure();
-
+        private ParserService parserService = new ParserService();
         public Parser(ILexicalAnalyzer lexicalAnalyzer)
         {
-            ParserService.Initialize(lexicalAnalyzer);
+            parserService.Initialize(lexicalAnalyzer);
         }
 
         public BinaryStructure Parse()
         {
-            while (ParserService.Accept(new TokenKeyword(Keywords.StructType)))
+            while (parserService.Accept(new TokenKeyword(Keywords.StructType)))
             {
-                var structParser = new StructParser();
+                var structParser = new StructParser(parserService);
                 binaryStructure.stuctDeclarations.Add(structParser.Parse());
             }
-            binaryStructure.mainStructure = MainParser.Parse();
+            var mainParser = new MainParser(parserService);
+            binaryStructure.mainStructure = mainParser.Parse();
             return binaryStructure;
         }
-
-        //private void ParameterLists()
-        //{
-        //    Expect(Operators.OpeningCircleBracket);
-        //    do
-        //    {
-        //        Parameter();
-        //    } while (Accept(Operators.Comma));
-        //    Expect(Operators.ClosingCircleBracket);
-        //}
-
-        //private void Parameter()
-        //{
-            
-        //}
-
-        //private void StructDeclarations()
-        //{
-        //    if (Accept(Keywords.StructType)) 
-        //    {
-        //        ParameterLists();
-                
-                
-        //       // Expect()
-        //        if (Accept(Keywords.Begin))
-        //        {
-
-        //            //loop statements
-        //            if (Accept(Keywords.End))
-        //            {
-
-        //            }
-        //        }
-        //    }
-        //}
-
     }
 }

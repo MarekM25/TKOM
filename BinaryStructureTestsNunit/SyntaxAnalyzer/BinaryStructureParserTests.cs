@@ -82,12 +82,12 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
             new TokenOperator(Operators.Semicolon),
             new TokenKeyword(Keywords.End),
 };
-
+        private ParserService parserService = new ParserService();
         [Test]
         public void BinaryStructureCompleteTests()
         {
             var lex = new LexicalAnalyzerMock(mainWithTwoIntStatements);
-            ParserService.Initialize(lex);
+            parserService.Initialize(lex);
             var parser = new BinaryStructureLib.Parser(lex);
             parser.Parse();
         }
@@ -96,7 +96,7 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
         public void BinaryWithOneStructureTests()
         {
             var lex = new LexicalAnalyzerMock(binaryWithOneStructure);
-            ParserService.Initialize(lex);
+            parserService.Initialize(lex);
             var parser = new BinaryStructureLib.Parser(lex);
             parser.Parse();
         }

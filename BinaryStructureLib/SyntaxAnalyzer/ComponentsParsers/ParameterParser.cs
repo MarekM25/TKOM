@@ -10,20 +10,27 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 {
     public class ParameterParser
     {
+        private ParserService parserService;
+
+        public ParameterParser(ParserService parserService)
+        {
+            this.parserService = parserService;
+        }
+
         public Parameter Parse()
         {
             Parameter parameter = new Parameter();
-            if (ParserService.Accept(new TokenKeyword(Keywords.IntType)))
+            if (parserService.Accept(new TokenKeyword(Keywords.IntType)))
                 parameter.Type = Keywords.IntType;
-            else if (ParserService.Accept(new TokenKeyword(Keywords.BoolType)))
+            else if (parserService.Accept(new TokenKeyword(Keywords.BoolType)))
                 parameter.Type = Keywords.BoolType;
             else
             {
                 //error
                 return null;
             }
-            ParserService.Expect(new TokenId());
-            parameter.Name = (string)ParserService.PreviousTokenValue();
+            parserService.Expect(new TokenId());
+            parameter.Name = (string)parserService.PreviousTokenValue();
             return parameter;
         }
     }
