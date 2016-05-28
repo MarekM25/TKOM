@@ -1,0 +1,6 @@
+main struct()
+begin
+	int zmienna1 size 8;
+	int zmienna2 size 8;
+	int zmienna3[8] size 8;
+end
