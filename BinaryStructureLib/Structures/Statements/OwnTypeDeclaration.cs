@@ -14,6 +14,7 @@ namespace BinaryStructureLib.Structures.Statements
 
         public override List<InterpreterResult> Interpret(IInterpreterService interpreterService)
         {
+            interpreterService.InterpretStructure(this);
             throw new NotImplementedException();
         }
     }

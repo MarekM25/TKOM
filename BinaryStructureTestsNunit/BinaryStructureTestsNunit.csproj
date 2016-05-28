@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="CharExtensionsTests.cs" />
     <Compile Include="Interpreter\BoolExpressionInterpreterTests.cs" />
+    <Compile Include="Interpreter\GetStructureTests.cs" />
     <Compile Include="Interpreter\ReadingValue.cs" />
     <Compile Include="LexicalAnalyzerMock.cs" />
     <Compile Include="LexicalAnalyzer\NextStringTokenReaderMock.cs" />

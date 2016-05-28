@@ -25,6 +25,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 
         public Structure Parse()
         {
+            parserService.currentStructure = structure;
             parserService.Expect(new TokenId());
             structure.Name = (string)parserService.PreviousTokenValue();
             structure.Parameters = parameterListParser.Parse();

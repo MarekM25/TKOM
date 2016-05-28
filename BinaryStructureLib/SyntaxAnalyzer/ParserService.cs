@@ -13,6 +13,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer
     {
         private ILexicalAnalyzer lexicalAnalyzer;
         private TokenBase previousToken;
+        public StructureBase currentStructure;
 
         public void Initialize(ILexicalAnalyzer lexicalAnalyzer)
         {
@@ -70,5 +71,11 @@ namespace BinaryStructureLib.SyntaxAnalyzer
             return lexicalAnalyzer.CurrentToken;
         }
 
+        public void AddNewVariableName(string variableName)
+        {
+            if (currentStructure.Variables.Contains(variableName))
+                throw new NotImplementedException();
+            currentStructure.Variables.Add(variableName);
+        }
     }
 }

@@ -27,5 +27,11 @@ namespace BinaryStructureLib.Structures
             }
             return results;
         }
+
+        public Structure GetStructureByName(string structureName)
+        {
+            var structure = stuctDeclarations.Where(x => x.Name == structureName).FirstOrDefault();
+            return null;
+        }
     }
 }

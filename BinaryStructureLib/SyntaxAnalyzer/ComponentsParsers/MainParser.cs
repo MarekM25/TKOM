@@ -21,6 +21,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 
         public MainStructure Parse()
         {
+            parserService.currentStructure = mainStructure;
             parserService.Expect(new TokenKeyword(Keywords.Main));
             parserService.Expect(new TokenKeyword(Keywords.StructType));
             parserService.Expect(new TokenOperator(Operators.OpeningCircleBracket));

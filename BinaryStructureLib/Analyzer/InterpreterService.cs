@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BinaryStructureLib.Structures.Statements;
 
 namespace BinaryStructureLib.Analyzer
 {
@@ -20,6 +21,10 @@ namespace BinaryStructureLib.Analyzer
             this.fileByteArray = fileByteArray;
         }
 
+        public void InterpretStructure(OwnTypeDeclaration ownTypeDeclaration)
+        {
+            throw new NotImplementedException();
+        }
 
         public int ReadValue(int size)
         {
