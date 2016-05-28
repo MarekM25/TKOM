@@ -59,8 +59,8 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
             new TokenKeyword(Keywords.Begin),
             new TokenId("ownType"),
             new TokenId("zmienna1"),
-            new TokenKeyword(Keywords.Size),
-            new TokenValue(7),
+            new TokenOperator(Operators.OpeningCircleBracket),
+            new TokenOperator(Operators.ClosingCircleBracket),
             new TokenOperator(Operators.Semicolon),
             new TokenKeyword(Keywords.End),
 };

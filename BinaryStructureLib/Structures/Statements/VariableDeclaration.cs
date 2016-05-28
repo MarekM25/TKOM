@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BinaryStructureLib.Analyzer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,5 +10,14 @@ namespace BinaryStructureLib.Structures.Statements
     public class VariableDeclaration :Statement
     {
         public Keywords Type { get; set; }
+
+        public override List<InterpreterResult> Interpret(InterpreterService interpreterService)
+        {
+            //add local variable
+            var result = new InterpreterResult();
+            result.Name = this.Name;
+            result.Size = this.Size;
+            return new List<InterpreterResult>() { result };
+        }
     }
 }

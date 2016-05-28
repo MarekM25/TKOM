@@ -52,7 +52,7 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
             var boolExpressionListParser = new BoolExpressionListsParser();
             BinaryOperator binaryOperatorExpression = boolExpressionListParser.Parse() as BinaryOperator;
             var constantBool = new Likeness<ConstantBool, ConstantBool>(new ConstantBool(true));
-            Assert.AreEqual(binaryOperatorExpression.Symbol,'&');
+            Assert.AreEqual(binaryOperatorExpression.Symbol,Operators.LogicAnd);
             Assert.AreEqual(binaryOperatorExpression.Left, constantBool);
             Assert.AreEqual(binaryOperatorExpression.Right, constantBool);
         }

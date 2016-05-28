@@ -26,10 +26,10 @@ namespace BinaryStructureTestsNunit.LexicalAnalyzer
         [Test]
         public void test()
         {
-            while (true)
-            {
-                var word = nextTokenStringReader.ReadNextTokenStringWord();
-            }
+            //while (true)
+            //{
+            //    var word = nextTokenStringReader.ReadNextTokenStringWord();
+            //}
         }
     }
 }

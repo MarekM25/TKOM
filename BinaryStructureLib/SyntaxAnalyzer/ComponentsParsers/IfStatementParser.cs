@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Structures.Statements;
+﻿using BinaryStructureLib.Analyzer;
+using BinaryStructureLib.Structures.Statements;
 using BinaryStructureLib.Tokens;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Structures;
+﻿using BinaryStructureLib.Analyzer;
+using BinaryStructureLib.Structures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +19,18 @@ namespace BinaryStructureLib
             this.byteArray = byteArray;
         }
 
-        private void DecodeSingleStatemnet(Statement test)
+        private void DecodeSingleResult(InterpreterResult interpreterResult)
         {
-            Console.WriteLine("Zdekodowano {0}",test.Name);
-            Console.WriteLine(Convert.ToInt32(byteArray[0]));
+            Console.WriteLine(string.Format("Zdekodowano zmienną o nazwie {0}, rozmiarze {1}",interpreterResult.Name,interpreterResult.Size));
         }
 
         public void Decode() 
         {
-            DecodeSingleStatemnet(binaryStructure.mainStructure.statements[0]);
+            var interpreterResults = binaryStructure.Interpret();
+            foreach (var interpreterResult in interpreterResults)
+            {
+                DecodeSingleResult(interpreterResult);
+            }
         }
     }
 }

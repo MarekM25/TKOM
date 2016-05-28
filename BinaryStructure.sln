@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryStructureClient", "Bi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryStructureLib", "BinaryStructureLib\BinaryStructureLib.csproj", "{AF21039F-994F-47E1-A61E-EEB06D04A6F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestsBinaryStructure", "TestsBinaryStructure\TestsBinaryStructure.csproj", "{05866157-B30A-45F0-8BCC-045AEA0CB14B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinaryStructureTestsNunit", "BinaryStructureTestsNunit\BinaryStructureTestsNunit.csproj", "{067456C0-086C-46A8-B37F-1405717B7BFC}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{AF21039F-994F-47E1-A61E-EEB06D04A6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF21039F-994F-47E1-A61E-EEB06D04A6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF21039F-994F-47E1-A61E-EEB06D04A6F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{05866157-B30A-45F0-8BCC-045AEA0CB14B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{05866157-B30A-45F0-8BCC-045AEA0CB14B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{05866157-B30A-45F0-8BCC-045AEA0CB14B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{05866157-B30A-45F0-8BCC-045AEA0CB14B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{067456C0-086C-46A8-B37F-1405717B7BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{067456C0-086C-46A8-B37F-1405717B7BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{067456C0-086C-46A8-B37F-1405717B7BFC}.Release|Any CPU.ActiveCfg = Release|Any CPU

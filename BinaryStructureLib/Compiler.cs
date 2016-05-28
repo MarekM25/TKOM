@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Exceptions;
+﻿using BinaryStructureLib.Analyzer;
+using BinaryStructureLib.Exceptions;
 using BinaryStructureLib.LexicalAnalayzer;
 using BinaryStructureLib.Structures;
 using System;
@@ -26,6 +27,7 @@ namespace BinaryStructureLib
             try
             {
                 ILexicalAnalyzer lexicalAnalyzer = new Scanner(stream);
+                IInterpreterService interpreterService = new InterpreterService();
                 lexicalAnalyzer.Init();
                 IParser parser = new Parser(lexicalAnalyzer);
                 Result = parser.Parse();

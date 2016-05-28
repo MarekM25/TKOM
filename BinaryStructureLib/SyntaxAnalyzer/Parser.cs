@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Structures;
+﻿using BinaryStructureLib.Analyzer;
+using BinaryStructureLib.Structures;
 using BinaryStructureLib.SyntaxAnalyzer;
 using BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers;
 using BinaryStructureLib.Tokens;

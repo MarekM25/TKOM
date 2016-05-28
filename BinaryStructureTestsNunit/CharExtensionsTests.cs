@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BinaryStructureLib.Analyzer
+namespace BinaryStructureTestsNunit
 {
-    public class Interpreter
+    class CharExtensionsTests
     {
     }
 }

@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Structures;
+﻿using BinaryStructureLib.Analyzer;
+using BinaryStructureLib.Structures;
 using BinaryStructureLib.Tokens;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             ParserService.Expect(new TokenOperator(Operators.OpeningCircleBracket));
             ParserService.Expect(new TokenOperator(Operators.ClosingCircleBracket));
             var mainBlockParser = new BlockParser();
-            mainStructure.statements = mainBlockParser.Parse();
+            mainStructure.Statements = mainBlockParser.Parse();
             return mainStructure;
         }
     }

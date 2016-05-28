@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Structures;
+﻿using BinaryStructureLib.Analyzer;
+using BinaryStructureLib.Structures;
 using BinaryStructureLib.Structures.ConditionExpression;
 using BinaryStructureLib.Tokens;
 using System;
@@ -11,7 +12,6 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 {
     public class BoolExpressionListsParser
     {
-
         private Expression ParseBracket()
         {
             //token ++

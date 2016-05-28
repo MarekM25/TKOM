@@ -44,8 +44,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Analyzer\Interpreter.cs" />
-    <Compile Include="Analyzer\NextInterpretedVar.cs" />
+    <Compile Include="Analyzer\IInterpreterService.cs" />
+    <Compile Include="Analyzer\InterpreterService.cs" />
+    <Compile Include="Analyzer\InterpreterResult.cs" />
     <Compile Include="Coder.cs" />
     <Compile Include="Compiler.cs" />
     <Compile Include="Decoder.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="LexicalAnalayzer\Scanner.cs" />
     <Compile Include="LexicalAnalayzer\StringTokenMapper.cs" />
     <Compile Include="LexicalAnalayzer\TokenStringMapper.cs" />
+    <Compile Include="Structures\StructureBase.cs" />
     <Compile Include="Structures\ConditionExpression\BinaryOperator.cs" />
     <Compile Include="Structures\ConditionExpression\ConditionExpression.cs" />
     <Compile Include="Structures\ConditionExpression\ConstantBool.cs" />
@@ -80,9 +82,8 @@
     <Compile Include="SyntaxAnalyzer\ComponentsParsers\BlockParser.cs" />
     <Compile Include="SyntaxAnalyzer\ComponentsParsers\MainParser.cs" />
     <Compile Include="SyntaxAnalyzer\ComponentsParsers\OwnTypeDeclarationParser.cs" />
-    <Compile Include="SyntaxAnalyzer\ComponentsParsers\ParameterParser.cs" />
     <Compile Include="SyntaxAnalyzer\ComponentsParsers\ParameterListParser.cs" />
-    <Compile Include="SyntaxAnalyzer\ComponentsParsers\VariableDeclarationParser.cs" />
+    <Compile Include="SyntaxAnalyzer\ComponentsParsers\ParameterParser.cs" />
     <Compile Include="SyntaxAnalyzer\IParser.cs" />
     <Compile Include="SyntaxAnalyzer\Parser.cs" />
     <Compile Include="SyntaxAnalyzer\ParserService.cs" />

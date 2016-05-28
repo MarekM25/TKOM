@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Structures;
+﻿using BinaryStructureLib.Analyzer;
+using BinaryStructureLib.Structures;
 using BinaryStructureLib.Structures.Statements;
 using BinaryStructureLib.Tokens;
 using System;
@@ -16,7 +17,6 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
         private TokenBase firstToken;
         private TokenBase secondToken;
         private TokenBase thirdToken;
-
 
         public Statement Parse()
         {

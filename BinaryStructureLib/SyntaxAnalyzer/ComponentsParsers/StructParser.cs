@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Structures;
+﻿using BinaryStructureLib.Analyzer;
+using BinaryStructureLib.Structures;
 using BinaryStructureLib.Tokens;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,8 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
         {
             ParserService.Expect(new TokenId());
             structure.Name = (string)ParserService.PreviousTokenValue();
-            structure.parameters = parameterListParser.Parse();
-            structure.statements = structBlockParser.Parse();
+            structure.Parameters = parameterListParser.Parse();
+            structure.Statements = structBlockParser.Parse();
             return structure;
         }
     }
