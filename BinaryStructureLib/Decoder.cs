@@ -26,11 +26,11 @@ namespace BinaryStructureLib
 
         public void Decode() 
         {
-            var interpreterResults = binaryStructure.Interpret();
-            foreach (var interpreterResult in interpreterResults)
-            {
-                DecodeSingleResult(interpreterResult);
-            }
+            //var interpreterResults = binaryStructure.Interpret();
+            //foreach (var interpreterResult in interpreterResults)
+            //{
+            //    DecodeSingleResult(interpreterResult);
+            //}
         }
     }
 }

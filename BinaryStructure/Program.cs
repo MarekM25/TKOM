@@ -26,9 +26,10 @@ namespace BinaryStructure
                     Console.WriteLine("Błąd podczas kompilacji.");
                     Console.WriteLine(compiler.Error);
                 }
+                compiler.Result.Interpret(File.ReadAllBytes("binary.bin"));
 
-                BinaryStructureLib.Decoder decoder = new BinaryStructureLib.Decoder(compiler.Result, File.ReadAllBytes("binary.bin"));
-                decoder.Decode();
+                //BinaryStructureLib.Decoder decoder = new BinaryStructureLib.Decoder(compiler.Result, );
+                //decoder.Decode();
             }
         }
     }

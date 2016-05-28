@@ -27,7 +27,6 @@ namespace BinaryStructureLib
             try
             {
                 ILexicalAnalyzer lexicalAnalyzer = new Scanner(stream);
-                IInterpreterService interpreterService = new InterpreterService();
                 lexicalAnalyzer.Init();
                 IParser parser = new Parser(lexicalAnalyzer);
                 Result = parser.Parse();

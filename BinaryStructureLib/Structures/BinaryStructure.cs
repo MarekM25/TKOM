@@ -15,9 +15,9 @@ namespace BinaryStructureLib.Structures
         public MainStructure mainStructure = new MainStructure();
 
 
-        public List<InterpreterResult> Interpret()
+        public List<InterpreterResult> Interpret(byte[] fileByteArray)
         {
-            InterpreterService interpreterService = new InterpreterService();
+            InterpreterService interpreterService = new InterpreterService(this, fileByteArray);
             List<InterpreterResult> results = new List<InterpreterResult>();
             foreach (var statement in mainStructure.Statements)
             {

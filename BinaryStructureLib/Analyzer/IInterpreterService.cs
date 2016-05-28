@@ -9,6 +9,6 @@ namespace BinaryStructureLib.Analyzer
 {
     public interface IInterpreterService
     {
-        void Init(BinaryStructure binaryStructure);
+        int ReadValue(int size);
     }
 }

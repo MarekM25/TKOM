@@ -10,32 +10,41 @@ namespace BinaryStructureLib.Analyzer
     public class InterpreterService : IInterpreterService
     {
         private BinaryStructure binaryStructure;
-        private Structure currentStructure;
+        private int currentByte = 0;
+        private byte[] fileByteArray;
 
-        public void TestMethod()
-        {
-            var structure = new Structure();
-            binaryStructure.stuctDeclarations.Add(structure);
-            binaryStructure.stuctDeclarations[0].Name = "Test1";
-            currentStructure = binaryStructure.stuctDeclarations[0];
-            currentStructure.Name = "Test2";
-            System.Diagnostics.Debug.WriteLine(binaryStructure.stuctDeclarations[0].Name);
 
-        }
-
-        public void SetVariableValue(string variableName)
-        {
-
-        }
-
-        public void GetVariableValue(string variableName)
-        {
-
-        }
-
-        public void Init(BinaryStructure binaryStructure)
+        public InterpreterService(BinaryStructure binaryStructure,byte[] fileByteArray)
         {
             this.binaryStructure = binaryStructure;
+            this.fileByteArray = fileByteArray;
+        }
+
+
+        public int ReadValue(int size)
+        {
+            int amountOfBytes = size / 8;
+            var smallPortion = fileByteArray.Skip(currentByte).Take(amountOfBytes).ToArray();
+            int returnValue = ConvertToInt(amountOfBytes,smallPortion);
+            currentByte += amountOfBytes;
+            return returnValue;
+        }
+
+
+        private int ConvertToInt(int numberOfBytes, byte[] array)
+        {
+            if (BitConverter.IsLittleEndian)
+                Array.Reverse(array);
+            switch (numberOfBytes)
+            {
+                case 1:
+                    return array[0];
+                case 2:
+                    return BitConverter.ToInt16(array, 0);
+                case 4:
+                    return BitConverter.ToInt32(array, 0);
+            }
+            throw new NotImplementedException();
         }
     }
 }
