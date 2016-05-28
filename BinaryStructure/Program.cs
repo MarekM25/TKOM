@@ -11,6 +11,14 @@ namespace BinaryStructure
 {
     class Program
     {
+        public static void PrintInterpreterResult(List<InterpreterResult> interpreterResults)
+        {
+            foreach (var result in interpreterResults)
+            {
+                Console.WriteLine(string.Format("Zdekodowano zmienną o nazwie {0}, rozmiarze {1} i wartości {2}", result.Name, result.Size, result.Value));
+            }
+        }
+
         static void Main(string[] args)
         {
             BinaryStructureLib.Structures.BinaryStructure test = new BinaryStructureLib.Structures.BinaryStructure();
@@ -26,10 +34,8 @@ namespace BinaryStructure
                     Console.WriteLine("Błąd podczas kompilacji.");
                     Console.WriteLine(compiler.Error);
                 }
-                compiler.Result.Interpret(File.ReadAllBytes("binary.bin"));
-
-                //BinaryStructureLib.Decoder decoder = new BinaryStructureLib.Decoder(compiler.Result, );
-                //decoder.Decode();
+                var results = compiler.Result.Interpret(File.ReadAllBytes("binary.bin"));
+                PrintInterpreterResult(results);
             }
         }
     }

@@ -13,7 +13,6 @@ namespace BinaryStructureLib.Structures.Statements
 
         public override List<InterpreterResult> Interpret(InterpreterService interpreterService)
         {
-            //add local variable
             var result = new InterpreterResult();
             result.Name = this.Name;
             result.Size = this.Size;
