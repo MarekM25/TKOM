@@ -14,10 +14,28 @@ namespace BinaryStructureLib.Structures.Statements
         public List<Statement> statements;
         public bool hasAlternatives { get; set; }
         public List<Statement> alternativeStatements;
+        IInterpreterService interpreterService;
 
-        public override List<InterpreterResult> Interpret(InterpreterService interpreterService)
+        private List<InterpreterResult> interpretStatementList(List<Statement> statements)
         {
-            throw new NotImplementedException();
+            var results = new List<InterpreterResult>();
+            foreach (var statement in statements)
+            {
+                results.AddRange(statement.Interpret(interpreterService));
+            }
+            return results;
+        }
+
+
+        public override List<InterpreterResult> Interpret(IInterpreterService interpreterService)
+        {
+            List<InterpreterResult> results;
+            this.interpreterService = interpreterService;
+            if (condition.Evaluate())
+                results = interpretStatementList(statements);
+            else
+                results = interpretStatementList(alternativeStatements);
+            return results;
         }
     }
 }

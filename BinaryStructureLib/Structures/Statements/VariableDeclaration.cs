@@ -11,7 +11,7 @@ namespace BinaryStructureLib.Structures.Statements
     {
         public Keywords Type { get; set; }
 
-        public override List<InterpreterResult> Interpret(InterpreterService interpreterService)
+        public override List<InterpreterResult> Interpret(IInterpreterService interpreterService)
         {
             var result = new InterpreterResult();
             result.Name = this.Name;

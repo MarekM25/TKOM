@@ -13,7 +13,7 @@ namespace BinaryStructureLib.Structures.Statements
         public string LengthVariableName { get; set; }
         public bool HasLengthValue { get; set; }
 
-        public override List<InterpreterResult> Interpret(InterpreterService interpreterService)
+        public override List<InterpreterResult> Interpret(IInterpreterService interpreterService)
         {
             var results = new List<InterpreterResult>();
             for (int i = 0; i < Length; ++i)

@@ -11,6 +11,6 @@ namespace BinaryStructureLib.Structures
         public string Name { get; set; }
         public int Size { get; set; }
 
-        public abstract List<InterpreterResult> Interpret(InterpreterService interpreterService);
+        public abstract List<InterpreterResult> Interpret(IInterpreterService interpreterService);
     }
 }
