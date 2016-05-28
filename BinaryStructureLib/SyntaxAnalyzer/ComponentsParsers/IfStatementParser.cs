@@ -22,7 +22,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
             this.conditionParser = new BoolExpressionListsParser(parserService);
             this.ifBlockParser = new BlockParser(parserService);
             this.elseBlockParser = new BlockParser(parserService);
-    }
+        }
 
         public IfStatement Parse()
         {

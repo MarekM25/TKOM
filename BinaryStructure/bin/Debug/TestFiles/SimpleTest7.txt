@@ -7,6 +7,10 @@ begin
 	end
 	else
 	begin
+		if(false)
+		begin
 		int zmienna3[8] size 8;
+		end
+		int zmienna5 size 8;
 	end
 end

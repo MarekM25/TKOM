@@ -21,7 +21,9 @@ namespace BinaryStructureLib.Structures
             List<InterpreterResult> results = new List<InterpreterResult>();
             foreach (var statement in mainStructure.Statements)
             {
-                results.AddRange(statement.Interpret(interpreterService));
+                var statementInterpretResult = statement.Interpret(interpreterService);
+                if (statementInterpretResult!=null)
+                    results.AddRange(statementInterpretResult);
             }
             return results;
         }
