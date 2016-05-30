@@ -1,8 +1,8 @@
 struct nazwaStruktury(int parameter1, int parameter2, bool boolParamaeter)
 begin
 	int zmienna4 size 8;
-	int zmienna3[parameter1] size 8;
-	if (zmienna1 = 4)
+	int zmienna3[5] size 8;
+	if (true)
 	begin
 		int zmienna6 size 8;
 		int zmienna5 size 8;

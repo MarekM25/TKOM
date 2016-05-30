@@ -1,4 +1,5 @@
 ﻿using BinaryStructureLib;
+using BinaryStructureLib.Exceptions;
 using BinaryStructureLib.LexicalAnalayzer;
 using BinaryStructureLib.Tokens;
 using NUnit.Framework;

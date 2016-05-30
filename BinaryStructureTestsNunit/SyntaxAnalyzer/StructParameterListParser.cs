@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BinaryStructureTestsNunit.Interpreter
+namespace BinaryStructureTestsNunit.SyntaxAnalyzer
 {
-    public class GetStructureTests
+    class StructParameterListParser
     {
-        
     }
 }

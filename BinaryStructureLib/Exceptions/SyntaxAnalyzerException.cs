@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace BinaryStructureLib.Exceptions
 {
-    public class SyntaxAnalyzerException : Exception
+    public class SyntaxAnalyzerException : CompilerException
     {
 
         public SyntaxAnalyzerException() : base() { }
+
+        public SyntaxAnalyzerException(string v) : base(v) { }
 
         public SyntaxAnalyzerException(TokenBase currentToken, string message) : base(string.Format("Błąd podczas parsowania. {0} W pobliżu {1}", message, currentToken.ToString())) { }
 

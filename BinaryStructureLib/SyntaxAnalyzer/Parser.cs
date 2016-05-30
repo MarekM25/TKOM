@@ -1,4 +1,5 @@
 ﻿using BinaryStructureLib.Analyzer;
+using BinaryStructureLib.Exceptions;
 using BinaryStructureLib.Structures;
 using BinaryStructureLib.SyntaxAnalyzer;
 using BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers;
@@ -20,12 +21,22 @@ namespace BinaryStructureLib
             parserService.Initialize(lexicalAnalyzer);
         }
 
+        private void AddStructure(Structure structure)
+        {
+            bool alreadyHasStructure = binaryStructure.stuctDeclarations.Any(x => x.Name == structure.Name);
+            if (alreadyHasStructure)
+                throw new SyntaxAnalyzerException(string.Format("Struktura o nazwie {0} już istnieje", structure.Name));
+            binaryStructure.stuctDeclarations.Add(structure);
+        }
+
+
         public BinaryStructure Parse()
         {
             while (parserService.Accept(new TokenKeyword(Keywords.StructType)))
             {
                 var structParser = new StructParser(parserService);
-                binaryStructure.stuctDeclarations.Add(structParser.Parse());
+                var structure = structParser.Parse();
+                AddStructure(structure);
             }
             var mainParser = new MainParser(parserService);
             binaryStructure.mainStructure = mainParser.Parse();

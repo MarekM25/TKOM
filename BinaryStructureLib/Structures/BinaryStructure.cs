@@ -1,4 +1,6 @@
 ﻿using BinaryStructureLib.Analyzer;
+using BinaryStructureLib.Exceptions;
+using BinaryStructureLib.Structures.Statements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,10 +30,20 @@ namespace BinaryStructureLib.Structures
             return results;
         }
 
-        public Structure GetStructureByName(string structureName)
+
+        public Structure InitStructure(OwnTypeDeclaration ownTypeDeclaration)
         {
-            var structure = stuctDeclarations.Where(x => x.Name == structureName).FirstOrDefault();
-            return null;
+            var structure = stuctDeclarations.Where(x => x.Name == ownTypeDeclaration.TypeName).FirstOrDefault();
+            if (structure == null)
+                throw new InterpreterException(string.Format("Nie znaleziono definicji struktury o typie {0}.", ownTypeDeclaration.TypeName));
+            if (ownTypeDeclaration.Values.Count() != structure.Parameters.Count())
+                throw new InterpreterException(string.Format("Niepoprawna ilość parameterów w wywołaniu struktury o typie {0}.", ownTypeDeclaration.TypeName));
+            for (int i=0;i<structure.Parameters.Count();++i)
+            {
+                structure.Parameters[i].Value = ownTypeDeclaration.Values[i];
+                structure.Variables[structure.Parameters[i].Name] = ownTypeDeclaration.Values[i];
+            }
+            return structure;
         }
     }
 }

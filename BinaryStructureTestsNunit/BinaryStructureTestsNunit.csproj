@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="CharExtensionsTests.cs" />
     <Compile Include="Interpreter\BoolExpressionInterpreterTests.cs" />
-    <Compile Include="Interpreter\GetStructureTests.cs" />
+    <Compile Include="Interpreter\InitStructureTests.cs" />
     <Compile Include="Interpreter\ReadingValue.cs" />
     <Compile Include="LexicalAnalyzerMock.cs" />
     <Compile Include="LexicalAnalyzer\NextStringTokenReaderMock.cs" />
@@ -59,9 +59,11 @@
     <Compile Include="LexicalAnalyzer\TokenStringMapperTests.cs" />
     <Compile Include="SyntaxAnalyzer\BinaryStructureParserTests.cs" />
     <Compile Include="SyntaxAnalyzer\BoolExpressionParameterListsParser.cs" />
+    <Compile Include="SyntaxAnalyzer\IfStatementParserTests.cs" />
     <Compile Include="SyntaxAnalyzer\MainParserTests.cs" />
     <Compile Include="SyntaxAnalyzer\ParameterListParserTest.cs" />
     <Compile Include="SyntaxAnalyzer\ParserServiceTests.cs" />
+    <Compile Include="SyntaxAnalyzer\StatementParserTests.cs" />
     <Compile Include="SyntaxAnalyzer\StructParserTests.cs" />
     <Compile Include="Tokens\TokenEqualityTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

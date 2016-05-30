@@ -8,5 +8,9 @@ namespace BinaryStructureLib.Exceptions
 {
     public class CompilerException : Exception
     {
+
+        public CompilerException() : base() { }
+
+        public CompilerException(string v) : base(v) { }
     }
 }

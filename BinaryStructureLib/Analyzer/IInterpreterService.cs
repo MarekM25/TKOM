@@ -11,6 +11,6 @@ namespace BinaryStructureLib.Analyzer
     public interface IInterpreterService
     {
         int ReadValue(int size);
-        void InterpretStructure(OwnTypeDeclaration ownTypeDeclaration);
+        List<InterpreterResult> InterpretStructure(OwnTypeDeclaration ownTypeDeclaration);
     }
 }

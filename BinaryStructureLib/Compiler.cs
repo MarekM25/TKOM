@@ -31,14 +31,9 @@ namespace BinaryStructureLib
                 IParser parser = new Parser(lexicalAnalyzer);
                 Result = parser.Parse();
             }
-            catch (LexicalAnalyzerException lexException)
+            catch (CompilerException compilerException)
             {
-                Error = lexException.Message;
-                return false;
-            }
-            catch (SyntaxAnalyzerException syntaxException)
-            {
-                Error = syntaxException.Message;
+                Error = compilerException.Message;
                 return false;
             }
             catch (Exception ex)

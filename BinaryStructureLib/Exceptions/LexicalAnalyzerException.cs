@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BinaryStructureLib
+namespace BinaryStructureLib.Exceptions
 {
     public class LexicalAnalyzerException : CompilerException
     {

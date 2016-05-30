@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BinaryStructureLib.Structures.Statements;
+using BinaryStructureLib.Exceptions;
 
 namespace BinaryStructureLib.Analyzer
 {
@@ -21,9 +22,10 @@ namespace BinaryStructureLib.Analyzer
             this.fileByteArray = fileByteArray;
         }
 
-        public void InterpretStructure(OwnTypeDeclaration ownTypeDeclaration)
+        public List<InterpreterResult> InterpretStructure(OwnTypeDeclaration ownTypeDeclaration)
         {
-            throw new NotImplementedException();
+            var structure = binaryStructure.InitStructure(ownTypeDeclaration);
+            return structure.Interpret(this);
         }
 
         public int ReadValue(int size)
@@ -49,7 +51,7 @@ namespace BinaryStructureLib.Analyzer
                 case 4:
                     return BitConverter.ToInt32(array, 0);
             }
-            throw new NotImplementedException();
+            throw new InterpreterException(string.Format("Nieobsłygiwany rozmiar zmiennej {0}.", numberOfBytes));
         }
     }
 }

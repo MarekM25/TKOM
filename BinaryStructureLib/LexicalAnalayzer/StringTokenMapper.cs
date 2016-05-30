@@ -1,4 +1,5 @@
-﻿using BinaryStructureLib.Tokens;
+﻿using BinaryStructureLib.Exceptions;
+using BinaryStructureLib.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;

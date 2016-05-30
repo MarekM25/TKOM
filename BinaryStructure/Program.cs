@@ -1,5 +1,6 @@
 ﻿using BinaryStructureLib;
 using BinaryStructureLib.Analyzer;
+using BinaryStructureLib.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +12,7 @@ namespace BinaryStructure
 {
     class Program
     {
-        public static void PrintInterpreterResult(List<InterpreterResult> interpreterResults)
+        private static void PrintInterpreterResult(List<InterpreterResult> interpreterResults)
         {
             foreach (var result in interpreterResults)
             {
@@ -19,12 +20,25 @@ namespace BinaryStructure
             }
         }
 
+        private static void Interpret(string filePath, BinaryStructureLib.Structures.BinaryStructure binaryStructure)
+        {
+            try
+            {
+                var results = binaryStructure.Interpret(File.ReadAllBytes(filePath));
+                PrintInterpreterResult(results);
+            }
+            catch (InterpreterException interpreterException)
+            {
+                Console.WriteLine(interpreterException.Message);
+            }
+            }
+
         static void Main(string[] args)
         {
             BinaryStructureLib.Structures.BinaryStructure test = new BinaryStructureLib.Structures.BinaryStructure();
-            if (args == null || args.Count() == 0)
-                Console.WriteLine("Zbyt mało argumentów wejściowych");
-            if (args.Count() == 1)
+            if (args == null || args.Count() != 2)
+                Console.WriteLine("Niepoprawna ilość argumentów wejściowych");
+            if (args.Count() == 2)
             {
                 var stream = System.IO.File.OpenRead(args[0]);
                 Compiler compiler = new Compiler(new StreamReader(stream));
@@ -34,8 +48,8 @@ namespace BinaryStructure
                     Console.WriteLine("Błąd podczas kompilacji.");
                     Console.WriteLine(compiler.Error);
                 }
-                var results = compiler.Result.Interpret(File.ReadAllBytes("binary.bin"));
-                PrintInterpreterResult(results);
+                else
+                    Interpret(args[1], compiler.Result);
             }
         }
     }
