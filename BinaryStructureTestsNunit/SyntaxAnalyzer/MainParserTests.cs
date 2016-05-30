@@ -14,6 +14,7 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
     [TestFixture]
     public class MainParserTests
     {
+        private StructureBase structBaseMock = new StructureBase();
         private TokenBase[] mainWithOneIntStatement = new TokenBase[]
 {
             new TokenKeyword(Keywords.Main),
@@ -65,26 +66,27 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
             new TokenKeyword(Keywords.End),
 };
         private ParserService parserService = new ParserService();
+
+        public MainParserTests()
+        {
+            parserService.currentStructure = structBaseMock;
+        }
         [Test]
-        public void BoolExpressionOneIntTest()
+        public void MainWithOneIntStatementTests()
         {
             parserService.Initialize(new LexicalAnalyzerMock(mainWithOneIntStatement));
-            //MainParser.Parse();
+            var parser = new MainParser(parserService);
+            var mainStruct = parser.Parse();
+            Assert.AreEqual(1,mainStruct.Statements.Count());
         }
 
         [Test]
         public void MainWithTwoIntStatementsTests()
         {
             parserService.Initialize(new LexicalAnalyzerMock(mainWithTwoIntStatements));
-           // MainParser.Parse();
+            var parser = new MainParser(parserService);
+            var mainStruct = parser.Parse();
+            Assert.AreEqual(2, mainStruct.Statements.Count());
         }
-
-        [Test]
-        public void MainWithOwnTypeTests()
-        {
-            parserService.Initialize(new LexicalAnalyzerMock(mainWithOwnType));
-            //MainParser.Parse();
-        }
-
     }
 }

@@ -33,7 +33,7 @@ namespace BinaryStructureLib.Structures.Statements
         {
             List<InterpreterResult> results = null;
             this.interpreterService = interpreterService;
-            if (condition.Evaluate())
+            if (condition.Evaluate(interpreterService))
                 results = interpretStatementList(statements);
             else if (this.hasAlternatives)
                 results = interpretStatementList(alternativeStatements);

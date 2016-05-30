@@ -106,7 +106,5 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
             var variableDeclaration = statementParser.Parse() as OwnTypeDeclaration;
             Assert.AreEqual("typStruktury", variableDeclaration.TypeName);
         }
-
-
     }
 }

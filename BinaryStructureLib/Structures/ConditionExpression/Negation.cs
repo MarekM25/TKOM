@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BinaryStructureLib.Analyzer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,9 @@ namespace BinaryStructureLib.Structures.ConditionExpression
             this.Right = right;
         }
 
-        public override bool Evaluate()
+        public override bool Evaluate(IInterpreterService interpreterService)
         {
-            return !(Right.Evaluate());
+            return !(Right.Evaluate(interpreterService));
         }
     }
 }

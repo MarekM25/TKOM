@@ -1,8 +1,8 @@
 main struct()
 begin
-	if(false)
+	int zmienna1 size 8;
+	if((zmienna1 > 40) & (true & false))
 	begin
-		int zmienna1 size 8;
 		int zmienna2 size 8;
 	end
 	else

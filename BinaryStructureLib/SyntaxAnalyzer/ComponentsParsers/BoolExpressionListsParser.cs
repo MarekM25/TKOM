@@ -21,10 +21,10 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
 
         private Expression ParseBracket()
         {
-            //token ++
+            parserService.Expect(new TokenOperator(Operators.OpeningCircleBracket));
             Expression expression = ParseExpression();
             parserService.Expect(new TokenOperator(Operators.ClosingCircleBracket));
-            return null;
+            return expression;
         }
 
         private Expression ParseConstantBool()
@@ -60,9 +60,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer.ComponentsParsers
                 return ParseConstantBool();
             if (parserService.EqualsCurrentToken(new TokenValue()))
                 return ParseIntValue();
-            if (parserService.EqualsCurrentToken(new TokenId()))
-                return ParseId();
-            return null;
+             return ParseId();
         }
 
 

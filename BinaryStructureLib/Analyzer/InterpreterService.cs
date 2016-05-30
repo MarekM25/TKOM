@@ -14,7 +14,7 @@ namespace BinaryStructureLib.Analyzer
         private BinaryStructure binaryStructure;
         private int currentByte = 0;
         private byte[] fileByteArray;
-
+        public StructureBase currentStructure;
 
         public InterpreterService(BinaryStructure binaryStructure,byte[] fileByteArray)
         {
@@ -25,6 +25,7 @@ namespace BinaryStructureLib.Analyzer
         public List<InterpreterResult> InterpretStructure(OwnTypeDeclaration ownTypeDeclaration)
         {
             var structure = binaryStructure.InitStructure(ownTypeDeclaration);
+            currentStructure = structure;
             return structure.Interpret(this);
         }
 
@@ -52,6 +53,22 @@ namespace BinaryStructureLib.Analyzer
                     return BitConverter.ToInt32(array, 0);
             }
             throw new InterpreterException(string.Format("Nieobsłygiwany rozmiar zmiennej {0}.", numberOfBytes));
+        }
+
+
+        public object GetValue(string variableName)
+        {
+            if (currentStructure.Variables.ContainsKey(variableName))
+                return currentStructure.Variables[variableName];
+            throw new InterpreterException(string.Format("Nie można pobrać wartości zmiennej o nazwie {0}", variableName));
+        }
+
+        public void SetValue(string variableName, object value)
+        {
+            if (currentStructure.Variables.ContainsKey(variableName))
+                currentStructure.Variables[variableName] = value;
+            else
+                throw new InterpreterException(string.Format("Nie można przypisać wartości zmiennej o nazwie {0}", variableName));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BinaryStructureLib.Analyzer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,21 +21,21 @@ namespace BinaryStructureLib.Structures.ConditionExpression
         }
 
 
-        public override bool Evaluate()
+        public override bool Evaluate(IInterpreterService interpreterService)
         {
             switch (Symbol)
             {
                 case Operators.LogicAnd:
-                        return Left.Evaluate() && Right.Evaluate();
+                        return Left.Evaluate(interpreterService) && Right.Evaluate(interpreterService);
                 case Operators.LogicOr:
-                    return Left.Evaluate() || Right.Evaluate();
+                    return Left.Evaluate(interpreterService) || Right.Evaluate(interpreterService);
                 case Operators.Smaller:
-                    return (Left as IGenericValue<int>).Value < (Right as IGenericValue<int>).Value;
+                    return (Left as IGenericValue<int>).Value(interpreterService) < (Right as IGenericValue<int>).Value(interpreterService);
                 case Operators.Greater:
-                    return (Left as IGenericValue<int>).Value > (Right as IGenericValue<int>).Value;
+                    return (Left as IGenericValue<int>).Value(interpreterService) > (Right as IGenericValue<int>).Value(interpreterService);
                 default:
-                    return (Left as IGenericValue<int>).Value == (Right as IGenericValue<int>).Value;
-             }
+                    return (Left as IGenericValue<int>).Value(interpreterService) == (Right as IGenericValue<int>).Value(interpreterService);
+            }
         }
     }
 }

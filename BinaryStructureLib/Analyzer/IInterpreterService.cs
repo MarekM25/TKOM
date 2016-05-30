@@ -12,5 +12,7 @@ namespace BinaryStructureLib.Analyzer
     {
         int ReadValue(int size);
         List<InterpreterResult> InterpretStructure(OwnTypeDeclaration ownTypeDeclaration);
+        object GetValue(string variableName);
+        void SetValue(string variableName, object value);
     }
 }

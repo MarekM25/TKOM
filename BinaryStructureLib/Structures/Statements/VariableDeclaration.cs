@@ -17,6 +17,7 @@ namespace BinaryStructureLib.Structures.Statements
             result.Name = this.Name;
             result.Size = this.Size;
             result.Value = interpreterService.ReadValue(Size);
+            interpreterService.SetValue(Name, result.Value);
             return new List<InterpreterResult>() { result };
         }
     }

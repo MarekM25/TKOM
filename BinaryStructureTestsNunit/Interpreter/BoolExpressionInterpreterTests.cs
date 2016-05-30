@@ -23,7 +23,7 @@ namespace BinaryStructureTestsNunit.Interpreter
         public bool SimpleEvalute(Operators symbol, bool firstBool, bool secondBool)
         {
             Expression simpleExpression = new BinaryOperator(symbol, new ConstantBool(firstBool), new ConstantBool(secondBool));
-            return simpleExpression.Evaluate();
+            return simpleExpression.Evaluate(null);
         }
 
         [TestCase(Operators.LogicAnd,Operators.LogicAnd, true, true, true, ExpectedResult = true)]
@@ -37,7 +37,7 @@ namespace BinaryStructureTestsNunit.Interpreter
             Expression simpleExpression = new BinaryOperator(firstSymbol,
                         new BinaryOperator(secondSymbol,new ConstantBool(firstBool),new ConstantBool(secondBool)),
                         new ConstantBool(thirdBool));
-            return simpleExpression.Evaluate();
+            return simpleExpression.Evaluate(null);
         }
         
         [TestCase(Operators.LogicCompare,3,3,ExpectedResult = true)]
@@ -51,7 +51,7 @@ namespace BinaryStructureTestsNunit.Interpreter
             Expression simpleExpression = new BinaryOperator(symbol,
                 new ConstantInt(firstValue),
                 new ConstantInt(secondValue));
-            return simpleExpression.Evaluate();
+            return simpleExpression.Evaluate(null);
         }
 
     }

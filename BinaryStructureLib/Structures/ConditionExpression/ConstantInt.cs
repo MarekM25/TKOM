@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BinaryStructureLib.Analyzer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,14 @@ namespace BinaryStructureLib.Structures.ConditionExpression
             this.Value = value;
         }
 
-        public override bool Evaluate()
+        public override bool Evaluate(IInterpreterService interpreterService)
         {
             return Convert.ToBoolean(Value);
+        }
+
+        int IGenericValue<int>.Value(IInterpreterService interpreterService)
+        {
+            return Value;
         }
     }
 }
