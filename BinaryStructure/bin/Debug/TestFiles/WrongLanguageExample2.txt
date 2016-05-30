@@ -1,9 +1,9 @@
-struct T(int" parameter1,int  parameter2, bool boolParameter)
+struct T(int" parameter1,int  parameter2)
 begin
 	int zmienna0 size 7;
 	int zmienna1[parameter2] size 17;
 	int zmienna2[parameter1] size 10;
-	if (boolParameter) then
+	if (true) then
 	begin
 		int zmienna3 size 10;
 	end

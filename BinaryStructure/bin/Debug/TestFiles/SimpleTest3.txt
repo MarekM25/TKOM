@@ -1,4 +1,4 @@
-struct nazwaStruktury(int parameter1, int parameter2, bool boolParamaeter)
+struct typStruktury(int parameter1, int parameter2)
 begin
 	int zmienna4 size 8;
 	int zmienna3[parameter1] size 8;
@@ -8,4 +8,6 @@ main struct()
 begin
 	int zmienna1 size 8;
 	int zmienna2 size 8;
+	typStruktury nazwaStruktury(2,8);
+	typStruktury nazwa2(5,8);
 end

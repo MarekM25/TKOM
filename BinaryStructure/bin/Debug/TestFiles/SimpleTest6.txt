@@ -7,6 +7,6 @@ begin
 	end
 	else
 	begin
-		int zmienna3[8] size 8;
+		int zmienna3[zmienna1] size 8;
 	end
 end

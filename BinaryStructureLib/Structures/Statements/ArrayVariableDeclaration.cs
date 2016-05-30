@@ -16,6 +16,8 @@ namespace BinaryStructureLib.Structures.Statements
         public override List<InterpreterResult> Interpret(IInterpreterService interpreterService)
         {
             var results = new List<InterpreterResult>();
+            if (!HasLengthValue)
+                Length = (int)interpreterService.GetValue(LengthVariableName);
             for (int i = 0; i < Length; ++i)
             {
                 var result = new InterpreterResult();
