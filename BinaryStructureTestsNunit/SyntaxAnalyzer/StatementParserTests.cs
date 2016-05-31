@@ -16,8 +16,8 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
     [TestFixture]
     public class StatementParserTests
     {
-        private ParserService parserService = new ParserService();
-        private StructureBase structBaseMock = new StructureBase();
+       // private ParserService parserService = new ParserService();
+        //private StructureBase structBaseMock = new StructureBase();
         private TokenBase[] simpleVariableDeclarationTokens = new TokenBase[]
         {
             new TokenKeyword(Keywords.IntType),
@@ -62,14 +62,24 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
 
         public StatementParserTests()
         {
+            //parserService.currentStructure = structBaseMock;
+        }
+
+
+        private ParserService InitParserService(TokenBase[] tokenBaseArray)
+        {
+            ParserService parserService = new ParserService();
+            StructureBase structBaseMock = new StructureBase();
             parserService.currentStructure = structBaseMock;
+            parserService.Initialize(new LexicalAnalyzerMock(tokenBaseArray));
+            return parserService;
         }
 
 
         [Test]
         public void VariableDeclarationTests()
         {
-            parserService.Initialize(new LexicalAnalyzerMock(simpleVariableDeclarationTokens));
+            var parserService = InitParserService(simpleVariableDeclarationTokens);
             StatementParser statementParser = new StatementParser(parserService);
             var variableDeclaration = statementParser.Parse() as VariableDeclaration;
             var expected = new Likeness<VariableDeclaration, VariableDeclaration>(new VariableDeclaration() { Name = "zmienna1", Size = 8, Type = Keywords.IntType });
@@ -79,7 +89,7 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
         [Test]
         public void ArrayVariableDeclarationTests()
         {
-            parserService.Initialize(new LexicalAnalyzerMock(simpleArrayVariableDeclarationTokens));
+            var parserService = InitParserService(simpleArrayVariableDeclarationTokens);
             StatementParser statementParser = new StatementParser(parserService);
             var variableDeclaration = statementParser.Parse() as ArrayVariableDeclaration;
             var expected = new Likeness<ArrayVariableDeclaration, ArrayVariableDeclaration>(new ArrayVariableDeclaration()
@@ -90,18 +100,18 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
         [Test]
         public void ArrayVariableDeclarationWithLengthName()
         {
-            parserService.Initialize(new LexicalAnalyzerMock(arrayVariableDeclarationWithLengthNameTokens));
+            var parserService = InitParserService(arrayVariableDeclarationWithLengthNameTokens);
             StatementParser statementParser = new StatementParser(parserService);
             var variableDeclaration = statementParser.Parse() as ArrayVariableDeclaration;
             var expected = new Likeness<ArrayVariableDeclaration, ArrayVariableDeclaration>(new ArrayVariableDeclaration()
-            { Name = "zmienna1", Size = 8, Type = Keywords.IntType, LengthVariableName="zmienna2", HasLengthValue = false });
+            { Name = "zmienna1", Size = 8, Type = Keywords.IntType, LengthVariableName = "zmienna2", HasLengthValue = false });
             Assert.AreEqual(expected, variableDeclaration);
         }
 
         [Test]
         public void OwnTypeDeclarationsTokens()
         {
-            parserService.Initialize(new LexicalAnalyzerMock(ownTypeDeclarationTokens));
+            var parserService = InitParserService(ownTypeDeclarationTokens);
             StatementParser statementParser = new StatementParser(parserService);
             var variableDeclaration = statementParser.Parse() as OwnTypeDeclaration;
             Assert.AreEqual("typStruktury", variableDeclaration.TypeName);

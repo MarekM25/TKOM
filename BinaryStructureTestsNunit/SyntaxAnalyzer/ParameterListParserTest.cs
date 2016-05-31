@@ -33,12 +33,27 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
     new TokenId("parameter2"),
         new TokenOperator(Operators.ClosingCircleBracket)};
 
-        private ParserService parserService = new ParserService();
+        //private ParserService parserService = new ParserService();
+        //private StructureBase structBase = new StructureBase();
+
+        public ParameterListParserTest()
+        {
+            //parserService.currentStructure = structBase;
+        }
+
+        private ParserService InitParserService(TokenBase[] tokenBaseArray)
+        {
+            ParserService parserService = new ParserService();
+            StructureBase structBaseMock = new StructureBase();
+            parserService.currentStructure = structBaseMock;
+            parserService.Initialize(new LexicalAnalyzerMock(tokenBaseArray));
+            return parserService;
+        }
 
         [Test]
         public void ZeroParameterParse()
         {
-            parserService.Initialize(new LexicalAnalyzerMock(zeroParameters));
+            var parserService = InitParserService(zeroParameters);
             var parameterListParser = new ParameterListParser(parserService);
             var parameterList = parameterListParser.Parse();
             Assert.AreEqual(0, parameterList.Count());
@@ -47,7 +62,7 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
         [Test]
         public void OneParameterParseCount()
         {
-            parserService.Initialize(new LexicalAnalyzerMock(oneParameter));
+            var parserService = InitParserService(oneParameter);
             var parameterListParser = new ParameterListParser(parserService);
             var parameterList = parameterListParser.Parse();
             Assert.AreEqual(1, parameterList.Count());
@@ -56,7 +71,7 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
         [Test]
         public void OneParameterParse()
         {
-            parserService.Initialize(new LexicalAnalyzerMock(oneParameter));
+            var parserService = InitParserService(oneParameter);
             var parameterListParser = new ParameterListParser(parserService);
             var parameterList = parameterListParser.Parse();
             Assert.AreEqual("parameter1", parameterList[0].Name);
@@ -65,7 +80,7 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
         [Test]
         public void TwoParameterParseCount()
         {
-            parserService.Initialize(new LexicalAnalyzerMock(twoParameter));
+            var parserService = InitParserService(twoParameter);
             var parameterListParser = new ParameterListParser(parserService);
             var parameterList = parameterListParser.Parse();
             Assert.AreEqual(2, parameterList.Count());

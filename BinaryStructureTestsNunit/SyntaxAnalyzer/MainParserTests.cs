@@ -14,7 +14,6 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
     [TestFixture]
     public class MainParserTests
     {
-        private StructureBase structBaseMock = new StructureBase();
         private TokenBase[] mainWithOneIntStatement = new TokenBase[]
 {
             new TokenKeyword(Keywords.Main),
@@ -65,16 +64,24 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
             new TokenOperator(Operators.Semicolon),
             new TokenKeyword(Keywords.End),
 };
-        private ParserService parserService = new ParserService();
 
-        public MainParserTests()
+
+
+
+        private ParserService InitParserService(TokenBase[] tokenBaseArray)
         {
+            ParserService parserService = new ParserService();
+            StructureBase structBaseMock = new StructureBase();
             parserService.currentStructure = structBaseMock;
+            parserService.Initialize(new LexicalAnalyzerMock(tokenBaseArray));
+            return parserService;
         }
+
+
         [Test]
         public void MainWithOneIntStatementTests()
         {
-            parserService.Initialize(new LexicalAnalyzerMock(mainWithOneIntStatement));
+            var parserService = InitParserService(mainWithOneIntStatement);
             var parser = new MainParser(parserService);
             var mainStruct = parser.Parse();
             Assert.AreEqual(1,mainStruct.Statements.Count());
@@ -83,7 +90,7 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
         [Test]
         public void MainWithTwoIntStatementsTests()
         {
-            parserService.Initialize(new LexicalAnalyzerMock(mainWithTwoIntStatements));
+            var parserService = InitParserService(mainWithTwoIntStatements);
             var parser = new MainParser(parserService);
             var mainStruct = parser.Parse();
             Assert.AreEqual(2, mainStruct.Statements.Count());
