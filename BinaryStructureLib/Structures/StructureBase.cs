@@ -11,5 +11,6 @@ namespace BinaryStructureLib
     {
         public List<Statement> Statements;
         public Dictionary<string, object> Variables = new Dictionary<string, object>();
+        public string TypeName { get; set; }
     }
 }

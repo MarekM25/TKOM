@@ -15,6 +15,7 @@ namespace BinaryStructureLib.Analyzer
         private int currentByte = 0;
         private byte[] fileByteArray;
         public StructureBase currentStructure;
+        public Stack<StructureBase> currentStructureStack = new Stack<StructureBase>();
 
         public InterpreterService(BinaryStructure binaryStructure,byte[] fileByteArray)
         {
@@ -25,8 +26,11 @@ namespace BinaryStructureLib.Analyzer
         public List<InterpreterResult> InterpretStructure(OwnTypeDeclaration ownTypeDeclaration)
         {
             var structure = binaryStructure.InitStructure(ownTypeDeclaration);
+            currentStructureStack.Push(currentStructure);
             currentStructure = structure;
-            return structure.Interpret(this);
+            var result = structure.Interpret(this);
+            currentStructure = currentStructureStack.Pop();
+            return result;
         }
 
         public int ReadValue(int size)
@@ -43,16 +47,17 @@ namespace BinaryStructureLib.Analyzer
         {
             if (BitConverter.IsLittleEndian)
                 Array.Reverse(array);
-            switch (numberOfBytes)
-            {
-                case 1:
-                    return array[0];
-                case 2:
-                    return BitConverter.ToInt16(array, 0);
-                case 4:
-                    return BitConverter.ToInt32(array, 0);
-            }
-            throw new InterpreterException(string.Format("Nieobsłygiwany rozmiar zmiennej {0}.", numberOfBytes));
+
+                switch (numberOfBytes)
+                {
+                    case 1:
+                        return array[0];
+                    case 2:
+                        return BitConverter.ToInt16(array, 0);
+                    case 4:
+                        return BitConverter.ToInt32(array, 0);
+                }
+            throw new InterpreterException(string.Format("Nieobslygiwany rozmiar zmiennej {0}.", numberOfBytes));
         }
 
 
@@ -60,7 +65,7 @@ namespace BinaryStructureLib.Analyzer
         {
             if (currentStructure.Variables.ContainsKey(variableName))
                 return currentStructure.Variables[variableName];
-            throw new InterpreterException(string.Format("Nie można pobrać wartości zmiennej o nazwie {0}", variableName));
+            throw new InterpreterException(string.Format("Nie mozna pobrac wartosci zmiennej o nazwie {0}", variableName));
         }
 
         public void SetValue(string variableName, object value)
@@ -68,7 +73,12 @@ namespace BinaryStructureLib.Analyzer
             if (currentStructure.Variables.ContainsKey(variableName))
                 currentStructure.Variables[variableName] = value;
             else
-                throw new InterpreterException(string.Format("Nie można przypisać wartości zmiennej o nazwie {0}", variableName));
+                throw new InterpreterException(string.Format("Nie mozna przypisac wartosci zmiennej o nazwie {0}", variableName));
+        }
+
+        public string GetCurrentStructureName()
+        {
+            return currentStructure.TypeName;
         }
     }
 }

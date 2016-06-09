@@ -13,12 +13,12 @@ namespace BinaryStructureLib.LexicalAnalayzer
         private bool isCurrentDigitsOnly = true;
         private bool isCurrentLetterOrDigitOnly = true;
         private bool isCurrentOperator = false;
-
+        private int lineCounter = 1;
+        private int updateLineCounterValue = 0;
 
         private string currentTokenString;
         private bool peekWhitespace = false;
         private bool endOfStream = false;
-        private bool wasOperator = false;
 
         private StreamReader streamReader;
 
@@ -46,6 +46,14 @@ namespace BinaryStructureLib.LexicalAnalayzer
             }
         }
 
+        public int LineCounter
+        {
+            get
+            {
+                return lineCounter;
+            }
+        }
+
         public NextTokenStringReader(StreamReader streamReader)
         {
             this.streamReader = streamReader;
@@ -69,6 +77,11 @@ namespace BinaryStructureLib.LexicalAnalayzer
 
         private void InitializeNextTokenString()
         {
+            if (updateLineCounterValue != 0)
+            {
+                lineCounter += updateLineCounterValue;
+                updateLineCounterValue = 0;
+            }
             while (!CheckIfWordEnd())
             {
                 char readChar = (char)streamReader.Read();
@@ -104,7 +117,7 @@ namespace BinaryStructureLib.LexicalAnalayzer
                 if (Char.IsWhiteSpace(nextChar))
                 {
                     peekWhitespace = true;
-                    streamReader.SkipWhitespace();
+                    updateLineCounterValue = streamReader.SkipWhitespaceWithLineCount();
                     nextChar = (char)streamReader.Peek();
                 }
             }

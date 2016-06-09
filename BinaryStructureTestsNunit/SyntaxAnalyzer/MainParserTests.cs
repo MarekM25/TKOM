@@ -87,13 +87,5 @@ namespace BinaryStructureTestsNunit.SyntaxAnalyzer
             Assert.AreEqual(1,mainStruct.Statements.Count());
         }
 
-        [Test]
-        public void MainWithTwoIntStatementsTests()
-        {
-            var parserService = InitParserService(mainWithTwoIntStatements);
-            var parser = new MainParser(parserService);
-            var mainStruct = parser.Parse();
-            Assert.AreEqual(2, mainStruct.Statements.Count());
-        }
     }
 }

@@ -9,5 +9,9 @@ namespace BinaryStructureLib.Structures
 {
     public class MainStructure : StructureBase
     {
+        public MainStructure()
+        {
+            TypeName = "MainStructure";
+        }
     }
 }

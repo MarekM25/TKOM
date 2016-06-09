@@ -38,7 +38,7 @@ namespace BinaryStructureLib
             }
             catch (Exception ex)
             {
-                Error = "Błąd wewnętrzny kompilatora: "+ex.Message;
+                Error = "Blad wewnetrzny kompilatora: "+ex.Message;
                 return false;
             }
             return true;

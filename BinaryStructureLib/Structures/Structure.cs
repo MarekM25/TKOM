@@ -11,7 +11,7 @@ namespace BinaryStructureLib.Structures
     public class Structure : StructureBase
     {
         public List<Parameter> Parameters = new List<Parameter>();
-        public string Name { get; set; }
+        
 
         public List<InterpreterResult> Interpret(IInterpreterService interpreterService)
         {

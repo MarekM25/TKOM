@@ -45,7 +45,7 @@ namespace BinaryStructureLib
                 return new TokenValue(Convert.ToInt32(stringToMap));
             if (System.Text.RegularExpressions.Regex.IsMatch(stringToMap, "^[a-zA-Z][a-zA-Z0-9]*$"))
                 return new TokenId(stringToMap);
-            throw new LexicalAnalyzerException(stringToMap);
+            throw new LexicalAnalyzerException(stringToMap,0);
         }
     }
 }

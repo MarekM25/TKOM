@@ -46,7 +46,7 @@ namespace BinaryStructureLib
 
                 }
             nextWord = builder.ToString();
-            if (!streamHasCharacter) // wjedną linijkę 
+            if (!streamHasCharacter) // wjedna linijke 
                 return false;
             return true;
         }

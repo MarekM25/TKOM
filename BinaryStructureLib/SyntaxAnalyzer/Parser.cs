@@ -23,9 +23,9 @@ namespace BinaryStructureLib
 
         private void AddStructure(Structure structure)
         {
-            bool alreadyHasStructure = binaryStructure.stuctDeclarations.Any(x => x.Name == structure.Name);
+            bool alreadyHasStructure = binaryStructure.stuctDeclarations.Any(x => x.TypeName == structure.TypeName);
             if (alreadyHasStructure)
-                throw new SyntaxAnalyzerException(string.Format("Struktura o nazwie {0} już istnieje", structure.Name));
+                throw new SyntaxAnalyzerException(string.Format("Struktura o nazwie {0} juz istnieje", structure.TypeName));
             binaryStructure.stuctDeclarations.Add(structure);
         }
 

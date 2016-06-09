@@ -34,11 +34,11 @@ namespace BinaryStructureLib.Structures
 
         public Structure InitStructure(OwnTypeDeclaration ownTypeDeclaration)
         {
-            var structure = stuctDeclarations.Where(x => x.Name == ownTypeDeclaration.TypeName).FirstOrDefault();
+            var structure = stuctDeclarations.Where(x => x.TypeName == ownTypeDeclaration.TypeName).FirstOrDefault();
             if (structure == null)
                 throw new InterpreterException(string.Format("Nie znaleziono definicji struktury o typie {0}.", ownTypeDeclaration.TypeName));
             if (ownTypeDeclaration.Values.Count() != structure.Parameters.Count())
-                throw new InterpreterException(string.Format("Niepoprawna ilość parameterów w wywołaniu struktury o typie {0}.", ownTypeDeclaration.TypeName));
+                throw new InterpreterException(string.Format("Niepoprawna ilosc parameterów w wywolaniu struktury o typie {0}.", ownTypeDeclaration.TypeName));
             for (int i=0;i<structure.Parameters.Count();++i)
             {
                 structure.Parameters[i].Value = ownTypeDeclaration.Values[i];

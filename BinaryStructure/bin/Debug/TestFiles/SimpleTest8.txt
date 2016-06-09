@@ -1,0 +1,18 @@
+struct typStruktury2()
+begin
+	int zmienna4 size 8;
+end
+
+struct typStruktury()
+begin
+	int zmienna3 size 8;
+	typStruktury2 nazwa2();
+end
+
+main struct()
+begin
+	int zmienna1 size 8;
+	int zmienna2 size 8;
+	typStruktury nazwaStruktury();
+	typStruktury nazwa2();
+end

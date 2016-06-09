@@ -50,6 +50,14 @@ namespace TestsBinaryStructure.LexicalAnalyzer
             }
         }
 
+        public int LineCounter
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public string ReadNextTokenStringWord()
         {
             return currentWord;

@@ -74,7 +74,7 @@ namespace BinaryStructureLib.SyntaxAnalyzer
         public void AddNewVariableName(string variableName)
         {
             if (currentStructure.Variables.ContainsKey(variableName))
-                throw new SyntaxAnalyzerException(CurrentToken(), string.Format("Nadmiarowe wystąpenie deklaracji zmiennej {0}.", variableName));
+                throw new SyntaxAnalyzerException(CurrentToken(), string.Format("Nadmiarowe wystapenie deklaracji zmiennej {0}.", variableName));
             currentStructure.Variables.Add(variableName, null);
         }
     }

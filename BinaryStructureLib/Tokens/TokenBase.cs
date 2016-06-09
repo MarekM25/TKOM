@@ -13,5 +13,6 @@ namespace BinaryStructureLib.Tokens
         public abstract bool Equals(TokenType type);
         public abstract bool Equals(Keywords keyword);
         public abstract bool Equals(Operators oper);
+        public int LineNumber;
     }
 }

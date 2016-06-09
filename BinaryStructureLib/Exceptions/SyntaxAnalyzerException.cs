@@ -14,10 +14,10 @@ namespace BinaryStructureLib.Exceptions
 
         public SyntaxAnalyzerException(string v) : base(v) { }
 
-        public SyntaxAnalyzerException(TokenBase currentToken, string message) : base(string.Format("Błąd podczas parsowania. {0} W pobliżu {1}", message, currentToken.ToString())) { }
+        public SyntaxAnalyzerException(TokenBase currentToken, string message) : base(string.Format("Blad podczas parsowania. {0} W poblizu {1} w linii {2}", message, currentToken.ToString(),currentToken.LineNumber)) { }
 
-        public SyntaxAnalyzerException(TokenBase actual, TokenBase expected)
-            : base(string.Format("Błąd podczas parsowania. Oczekiwano {0}, a otrzymano {1}", actual.ToString(), expected.ToString()))
+        public SyntaxAnalyzerException(TokenBase expected, TokenBase actual)
+            : base(string.Format("Blad podczas parsowania. Oczekiwano {0}, a otrzymano {1} w linii {2}", expected.ToString(), actual.ToString(),actual.LineNumber))
         { }
 
     }

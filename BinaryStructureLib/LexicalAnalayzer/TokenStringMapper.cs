@@ -44,16 +44,25 @@ namespace BinaryStructureLib.LexicalAnalayzer
             this.nextTokenStringReader = nextTokenStringReader;
         }
 
-        public TokenBase MapNextWord()
+        private TokenBase MapToNextToken()
         {
             string nextWord = nextTokenStringReader.ReadNextTokenStringWord();
             if (tokensDict.ContainsKey(nextWord))
+            {
                 return tokensDict[nextWord];
+            }
             if (nextTokenStringReader.IsCurrentDigitsOnly)
                 return new TokenValue(Convert.ToInt32(nextWord));
             if (nextTokenStringReader.IsCurrentDigitsOrLettersOnly)
                 return new TokenId(nextWord);
-            throw new LexicalAnalyzerException(nextWord);
+            throw new LexicalAnalyzerException(nextWord,nextTokenStringReader.LineCounter);
+        }
+
+        public TokenBase MapNextWord()
+        {
+            var token = MapToNextToken();
+            token.LineNumber = nextTokenStringReader.LineCounter;
+            return token;
         }
     }
 }

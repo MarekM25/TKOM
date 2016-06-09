@@ -1,4 +1,4 @@
-struct nazwaStruktury(int parameter1, int parameter2)
+nazwaStruktury(int parameter1, int parameter2)
 begin
 	int zmienna4 size 8;
 	int zmienna3[5] size 8;
@@ -23,5 +23,5 @@ main struct()
 begin
 	int zmienna1 size 8;
 	int zmienna2 size 8;
-	nazwaStruktury struk(1,3);
+	nazwaStruktury struk(1,3,4);
 end

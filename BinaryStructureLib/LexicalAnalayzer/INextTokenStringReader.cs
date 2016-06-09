@@ -11,6 +11,7 @@ namespace BinaryStructureLib.LexicalAnalayzer
         bool IsCurrentDigitsOnly { get; }
         bool IsCurrentDigitsOrLettersOnly { get; }
         bool EndOfStream { get; }
+        int LineCounter { get; }
         string ReadNextTokenStringWord();
     }
 }

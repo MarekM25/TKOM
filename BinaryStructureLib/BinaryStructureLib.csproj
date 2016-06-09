@@ -47,9 +47,7 @@
     <Compile Include="Analyzer\IInterpreterService.cs" />
     <Compile Include="Analyzer\InterpreterService.cs" />
     <Compile Include="Analyzer\InterpreterResult.cs" />
-    <Compile Include="Coder.cs" />
     <Compile Include="Compiler.cs" />
-    <Compile Include="Decoder.cs" />
     <Compile Include="Enums\Keywords.cs" />
     <Compile Include="Enums\Operators.cs" />
     <Compile Include="Enums\TokenType.cs" />

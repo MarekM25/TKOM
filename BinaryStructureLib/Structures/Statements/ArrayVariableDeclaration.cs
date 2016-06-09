@@ -23,6 +23,7 @@ namespace BinaryStructureLib.Structures.Statements
                 var result = new InterpreterResult();
                 result.Name = this.Name;
                 result.Size = this.Size;
+                result.StructureName = interpreterService.GetCurrentStructureName();
                 result.Value = interpreterService.ReadValue(Size);
                 results.Add(result);
             }

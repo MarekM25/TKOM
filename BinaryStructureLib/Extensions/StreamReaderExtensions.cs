@@ -9,14 +9,18 @@ namespace BinaryStructureLib.Extensions
 {
     public static class StreamReaderExtensions
     {
-        public static void SkipWhitespace(this StreamReader streamReader)
+        public static int SkipWhitespaceWithLineCount(this StreamReader streamReader)
         {
+            int lineCounter = 0;
             char nextChar = (char)streamReader.Peek();
             while (Char.IsWhiteSpace(nextChar))
             {
+                if (nextChar == 13)
+                    ++lineCounter;
                 streamReader.Read();
                 nextChar = (char)streamReader.Peek();
             }
+            return lineCounter;
         }
     }
 }
